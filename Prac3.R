@@ -152,3 +152,14 @@ plot(textures1)
 # we can just use the c function to combine rasters in terra
 
 raster_and_texture <- c(m1_clip, textures1)
+
+#PCA
+
+pca <- prcomp(as.data.frame(raster_and_texture, na.rm=TRUE), 
+              center=TRUE, 
+              scale=TRUE)
+
+summary(pca)
+
+x <- predict(raster_and_texture, pca)
+plot(x)
