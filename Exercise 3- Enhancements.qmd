@@ -1,0 +1,68 @@
+---
+title: "Week 3: Corrections"
+author: "Fiaz Hussain"
+format: html
+---
+
+# Summary
+
+This week introduced the concept of corrections in remote sensing and why they are essential before carrying out any quantitative analysis. Satellite imagery is influenced by sensor characteristics, atmospheric effects, illumination conditions, and terrain. Corrections aim to reduce these sources of variation so that pixel values more accurately represent the Earth’s surface.
+
+Radiometric correction converts raw digital numbers into physical reflectance values, reducing sensor‑related inconsistencies. Atmospheric correction removes haze, scattering, and absorption caused by gases and aerosols, improving comparability across dates. Topographic correction adjusts for slope‑related illumination differences, especially in mountainous regions. Geometric correction ensures that imagery aligns correctly with real‑world coordinates, enabling accurate overlay with other datasets.
+
+Although the practical exercises this week focused on NDVI, PCA, texture measures, and DN distributions rather than implementing full correction workflows, these outputs depend on the underlying principles of correction. Understanding how raw values are influenced by external factors helps explain why indices and transformations behave the way they do.
+
+# Applications
+
+Corrections are widely used in remote sensing workflows:
+
+-   Multi‑temporal analysis: Atmospheric and radiometric corrections allow NDVI and other indices to be compared across seasons or years without being distorted by haze or sensor differences.
+-   Sensor harmonisation: Corrected reflectance enables integration of data from different satellites, such as Sentinel‑2 and Landsat.
+-   Improved classification: Topographic and radiometric corrections reduce brightness variation, helping classifiers distinguish land‑cover types more accurately.
+-   Environmental monitoring: Consistent reflectance values are essential for tracking vegetation health, water quality, and land‑use change.
+
+Even though this week’s practical outputs were NDVI, PCA, texture, and DN plots, these products rely on corrected or standardised reflectance values to be meaningful.
+
+# Practical Outputs
+
+## NDVI
+
+The NDVI image highlights vegetation patterns across the study area. Higher values indicate denser or healthier vegetation, while lower values correspond to bare soil, built‑up areas, or water.
+
+```{r}
+#| echo: false
+knitr::include_graphics("figures/NDVI.png")
+```
+
+## DN Distribution
+
+The DN histograms show the frequency distribution of digital numbers for different bands. These plots help illustrate why radiometric correction is necessary: raw DN values vary by band and are influenced by illumination and sensor characteristics.
+
+```{r}
+#| echo: false
+knitr::include_graphics("figures/Dn_plot.png")
+```
+
+## Texture Measures
+
+Texture analysis captures spatial variation in pixel values, which can help differentiate surfaces with similar reflectance but different structure. This is useful for identifying patterns such as roughness, heterogeneity, or fragmentation.
+
+```{r}
+#| echo: false
+knitr::include_graphics("figures/texture.png")
+```
+
+## Principal Component Analysis (PCA)
+
+PCA reduces the dimensionality of multispectral data by transforming correlated bands into uncorrelated components. The first few components capture most of the variance, revealing dominant spatial patterns and highlighting subtle differences not visible in individual bands.
+
+```{r}
+#| echo: false
+knitr::include_graphics("figures/PCA.png")
+```
+
+# Reflection
+
+This week clarified how essential corrections are for producing reliable remote‑sensing outputs. Before this session, I tended to think of satellite imagery as already “ready to use,” but the DN plots and PCA results showed how much variation comes from sensor behaviour and illumination. Understanding the purpose of corrections helped me see why uncorrected imagery can lead to misleading interpretations, especially when comparing images across time.
+
+Working with NDVI, texture, and PCA also made it clear how dependent these methods are on consistent reflectance values. Even though we did not perform full atmospheric or topographic corrections in this exercise, the concepts helped me interpret the outputs more confidently. This foundation will be important in later weeks when working with classification and change detection, where consistency across images is crucial.
