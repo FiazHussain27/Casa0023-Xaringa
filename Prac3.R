@@ -46,13 +46,14 @@ Ok # surface reflectance with DOS
 #hazeDN    <- RStoolbox::estimateHaze(lsat, hazeBands = 2:4, darkProp = 0.01, plot = TRUE)
 
 #lsat_sref <- radCor(lsatMeta, metaData = metaData, method = "dos", 
-                    hazeValues = hazeDN, hazeBands = 2:4)
+                    #hazeValues = hazeDN, hazeBands = 2:4)
 
 #terra::writeRaster(lsat_rad, datatype="FLT4S", filename = "prac_3/Lsatdata8/lsat_rad.tif", format = "GTiff", overwrite=TRUE)
 
 
 
 #List your raster files excluding band 8 using the patter argument
+# Accessing data
 
 listlandsat_8<-dir_info("C:/Users/fiazg/Documents/CASA/Remote Sensing/prac3/Lsat8")%>%
 dplyr::filter(str_detect(path, "[B123456790].TIF")) %>%
