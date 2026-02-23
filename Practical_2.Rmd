@@ -1,0 +1,80 @@
+---
+title: "Practical 2 — Working With Sentinel‑2 in SNAP"
+author: "Fiaz Hussain"
+output:
+  xaringan::moon_reader:
+    css: ["metropolis", "metropolis-fonts"]
+    nature:
+      ratio: "16:9"
+      highlightStyle: github
+      highlightLines: true
+      slideNumberFormat: "%current%"
+      transition: "fade"
+---
+
+class: center, middle, inverse
+background-size: cover
+
+# Practical 2  
+## Sentinel‑2 Band Composites & Interpretation
+
+---
+
+# What This Practical Covered
+
+- Loading Sentinel‑2 imagery in SNAP  
+- Exploring spectral bands  
+- Creating RGB composites  
+- Understanding reflectance behaviour  
+- Interpreting land cover from band combinations  
+
+---
+
+# Sentinel‑2 Bands Used
+
+- **B4 (Red)**  
+- **B3 (Green)**  
+- **B2 (Blue)**  
+- **B8 (NIR)**  
+
+These bands allow both true‑colour and false‑colour visualisation.
+
+---
+
+# True Colour Composite (B4, B3, B2)
+
+```{r, echo=FALSE, out.width="70%", out.height="70%"}
+knitr::include_graphics("C:/Users/fiazg/Documents/CASA/Remote Sensing/Practical_2/images/RGB_Landsat_clipped_RGB.png")
+```
+
+---
+
+# False Colour Vegetation (B8, B4, B3)
+
+```{r, echo=FALSE, out.width="70%", out.height="70%"}
+knitr::include_graphics("C:/Users/fiazg/Documents/CASA/Remote Sensing/Practical_2/images/False_Landsat_clipped_RGB.png")
+```
+
+---
+
+# Interpretation Notes
+
+- Vegetation appears **bright red** in false‑colour due to strong NIR reflectance  
+- Water appears **dark** in both composites  
+- Built‑up areas show **high reflectance** in visible bands  
+- Soil brightness varies with moisture and mineral content  
+
+---
+
+# Reflection
+
+- This practical reinforced how different band combinations reveal different land‑surface properties  
+- Seeing the NIR response of vegetation made spectral theory more intuitive  
+- SNAP workflows are becoming more familiar and efficient  
+- Understanding these basics prepares for indices, masking, and classification in later weeks  
+
+---
+
+class: center, middle
+
+# Practical 2 Complete
