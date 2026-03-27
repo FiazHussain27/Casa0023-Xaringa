@@ -42,9 +42,8 @@ Landsat is a joint **NASA/USGS** programme providing the longest continuous reco
 ]
 
 .pull-right[
-
-```{r, echo=FALSE, out.width="100%", fig.cap="Landsat 8 false colour composite, Iran. Red = vegetation, grey-blue = urban. Source: NASA/USGS (public domain)"}
-knitr::include_graphics("https://eoimages.gsfc.nasa.gov/images/imagerecords/87000/87640/iran.false.color.lrg.jpg")
+```{r, echo=FALSE, out.width="100%", fig.cap="Landsat 9 false colour composite (B5-B4-B3), Cape Town, June 2022. Red = active vegetation, grey-blue = urban. Source: USGS."}
+knitr::include_graphics("figures/False_Landsat_clipped_RGB.png")
 ```
 
 ]
