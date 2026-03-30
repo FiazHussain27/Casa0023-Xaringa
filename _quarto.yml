@@ -1,0 +1,18 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Learning Diary"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: week1.qmd
+        text: Week 1
+      - href: week2.qmd
+        text: Week 2
+      - href: week 3.qmd
+        text: Week 3
+      - href: week 4.qmd
+        text: Week 4
