@@ -1,4 +1,3 @@
-yaml
 ---
 title: "Week 1"
 bibliography: references.bib
