@@ -1,10 +1,16 @@
+
+---
+title: "Week 2"
+bibliography: references.bib
+csl: harvard-cite-them-right.csl
+---
 # Week 2 {.unnumbered}
 
 Here is the presentation on LandSat sensor  and its historic evolution and its application in the real world. 
 
 ```{r, echo=FALSE}
 xaringanExtra::embed_xaringan(
-  url = "https://github.com/FiazHussain27/Casa0023-Xaringa.git/week2.html",
+  url = "https://github.com/FiazHussain27/Casa0023-Xaringa.git/Week-2.html",
   ratio = "16:9"
 )
 ```
