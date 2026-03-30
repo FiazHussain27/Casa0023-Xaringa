@@ -4,7 +4,7 @@ Here is the presentation on LandSat sensor  and its historic evolution and its a
 
 ```{r, echo=FALSE}
 xaringanExtra::embed_xaringan(
-  url = "https://github.com/FiazHussain27/Casa0023-Xaringa.git/week2.rmd",
+  url = "https://github.com/FiazHussain27/Casa0023-Xaringa.git/week2.html",
   ratio = "16:9"
 )
 ```
