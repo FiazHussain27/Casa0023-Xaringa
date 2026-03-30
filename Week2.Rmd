@@ -27,57 +27,38 @@ class: inverse, center, middle
 CASA0023 · UCL CASA · 2026
 
 ---
-class: inverse, center, middle
-
-# Summary
-
----
 # Summary — What is Landsat?
 
 Landsat is a joint **NASA/USGS** programme providing the longest continuous record of Earth's land surface from space — operating since **1972** (Wulder et al., 2022).
 
 .pull-left[
 
-**Programme overview**
 - 9 satellites launched; **Landsat 8 and 9** currently operational
 - Combined **8-day revisit** at the equator
-- **30m** spatial resolution (optical), **100m** (thermal)
-- Free and open data since **2008**
-- Over **10 million scenes** in archive
-
-**Landsat 8/9 bands**
-- 11 bands: visible, NIR, SWIR, thermal (TIRS)
-- Unique advantage: **two thermal infrared bands** — the only free sensor with this capability
-- Sentinel-2 has no thermal band at all
+- **30m** optical, **100m** thermal spatial resolution
+- Free and open data since **2008**; over **10 million scenes**
+- 11 bands including **two thermal infrared (TIRS)** bands — the only free sensor with this capability; Sentinel-2 has no thermal band
 
 ]
 
 .pull-right[
-
-```{r, echo=FALSE, out.width="100%", fig.cap="Landsat 8 false colour composite. Red = vegetation, grey-blue = urban. Source: NASA/USGS (public domain)"}
-knitr::include_graphics("https://eoimages.gsfc.nasa.gov/images/imagerecords/87000/87640/iran.false.color.lrg.jpg")
+```{r, echo=FALSE, out.width="100%", fig.cap="Landsat 9 false colour composite (B5-B4-B3), Cape Town, June 2022. Red = active vegetation, grey-blue = urban. Source: USGS."}
+knitr::include_graphics("figures/False_Landsat_clipped_RGB.png")
 ```
 
 ]
 
 ---
-# Summary — Resolution and Limitations
-
-**Four resolution trade-offs:**
+# Summary — Resolution Trade-offs and Limitations
 
 | Resolution | Landsat 8/9 | Implication |
 |-----------|-------------|-------------|
 | Spatial | 30m optical / 100m thermal | Mixed pixels in dense urban areas |
-| Spectral | 11 bands incl. TIRS | Richer than Sentinel-2 but fewer bands than hyperspectral |
-| Temporal | 16 days (8 days combined) | Gaps for time-sensitive monitoring; cloud cover worsens this |
-| Radiometric | 12-bit (4096 levels) | High precision; Collection 2 Level-2 products are analysis-ready |
+| Spectral | 11 bands incl. TIRS | Richer than Sentinel-2; unique thermal capability |
+| Temporal | 16 days / 8 days combined | Gaps for time-sensitive monitoring |
+| Radiometric | 12-bit (4096 levels) | Collection 2 Level-2 products are analysis-ready |
 
-**Key limitation:** Landsat is a **passive optical sensor** — it depends on reflected solar radiation. Cloud cover and darkness make imagery unusable during storm events, precisely when monitoring may be most needed. This is why Landsat is increasingly used alongside active SAR sensors like Sentinel-1 that are cloud-independent.
-
----
-class: inverse, center, middle
-
-# Applications
+**Key limitation:** Landsat is a **passive optical sensor** — cloud cover and darkness make imagery unusable during storm events, precisely when monitoring may be most needed. This is why Landsat is increasingly combined with active SAR sensors like Sentinel-1 that are cloud-independent.
 
 ---
 # Application 1 — Urban Heat Islands
@@ -85,61 +66,67 @@ class: inverse, center, middle
 MacLachlan et al. (2021) used Landsat 8 LST time series to map urban heat island (UHI) intensity across multiple cities, demonstrating that impervious surface expansion directly drives surface temperature increases.
 
 .pull-left[
+Landsat's **thermal infrared band** enables land surface temperature retrieval, while its **archive depth** allows detection of multi-decade warming trends no other free sensor can match.
 
-The study illustrates Landsat's key strength for UHI work: its **thermal infrared band** enables land surface temperature retrieval, while its **archive depth** allows detection of multi-decade warming trends that no other free sensor can match.
-
-**Limitation noted by the study:** Landsat captures daytime LST only (~10:00 local time), missing the nocturnal UHI which is often more intense. MODIS provides both day and night acquisitions but at 1km — too coarse for intra-city analysis. This trade-off between spatial and temporal resolution remains unresolved by any single free sensor.
-
+**Limitation:** Landsat captures daytime LST only (~10:00 local time), missing the nocturnal UHI which is often more intense. MODIS provides day and night acquisitions but at 1km — too coarse for intra-city analysis.
 ]
 
 .pull-right[
-
-```{r, echo=FALSE, out.width="100%", fig.cap="Landsat 8 thermal infrared image of iceberg A-68 calving from Larsen C ice shelf, 2017. Orange = warmest surfaces. Source: NASA Earth Observatory (public domain)"}
-knitr::include_graphics("https://eoimages.gsfc.nasa.gov/images/imagerecords/90000/90574/larsenC.A68.lrg.jpg")
+```{r, echo=FALSE, out.width="100%", fig.cap="Landsat 8 TIRS thermal image showing land surface temperature variation. Source: NASA (public domain)"}
+knitr::include_graphics("figures/Urban-heat.jpg")
 ```
-
 ]
 
 .footnote[MacLachlan et al. (2021) DOI: 10.3389/frsc.2021.715890]
 
 ---
-# Application 2 — Land Cover Change and Water
+# Application 2 — Land Cover Change
 
-**Land cover:** Wulder et al. (2022) highlight that Landsat's 50-year archive enables detection of land change across the full Anthropocene — urban expansion, deforestation, agricultural intensification — at 30m resolution. Sentinel-2 only provides data from 2015, making it insufficient for long-term baselines.
+Wulder et al. (2022) highlight that Landsat's 50-year archive enables detection of land change across the full Anthropocene — urban expansion, deforestation, agricultural intensification — at 30m. Sentinel-2 only provides data from 2015, making it insufficient for long-term baselines.
 
 .pull-left[
+Hansen et al. used annual Landsat composites to produce the first globally consistent map of forest loss at 30m, detecting **2.3 million km²** of forest loss between 2000 and 2012.
 
-**Surface water:** Pekel et al. (2016) used the entire Landsat archive (1984–2015) to map global surface water changes, finding **90,000 km²** of permanent water lost globally — equivalent to five Lake Eries. The MNDWI index exploits Landsat's Green and SWIR bands:
-
-$$MNDWI = \frac{Green - SWIR}{Green + SWIR}$$
-
+Schneider et al. quantified global urban expansion between 1990–2000, finding urban land increased by **58,000 km²** in a single decade — only possible with Landsat's temporal depth.
 ]
 
 .pull-right[
-
-```{r, echo=FALSE, out.width="100%", fig.cap="Landsat false-colour image showing Beijing urban expansion 1978–2011. Red = vegetation, tan/brown = built-up. Source: NASA Earth Observatory (public domain)"}
-knitr::include_graphics("https://eoimages.gsfc.nasa.gov/images/imagerecords/78000/78749/beijing.comparisons.crop.jpg")
+.pull-left[
+```{r, echo=FALSE, out.width="100%", fig.cap="Beijing 1978 (Landsat 3). Source: NASA SVS (public domain)"}
+knitr::include_graphics("figures/beijing_1978.0660_web.png")
 ```
-
 ]
 
-.footnote[Wulder et al. (2022) DOI: 10.1016/j.rse.2022.113195 | Pekel et al. (2016) DOI: 10.1038/nature20584]
+.pull-right[
+```{r, echo=FALSE, out.width="100%", fig.cap="Beijing 2010 (Landsat 5). Red = urban expansion. Source: NASA SVS (public domain)"}
+knitr::include_graphics("figures/beijing_2010.1020_web.png")
+```
+]
+]
+
+.footnote[Wulder et al. (2022) DOI: 10.1016/j.rse.2022.113195]
 
 ---
-class: inverse, center, middle
+# Application 3 — Surface Water Monitoring
 
-# Reflection
+Pekel et al. (2016) used the entire Landsat archive (1984–2015) to map global surface water changes, finding **90,000 km²** of permanent water lost globally — equivalent to five Lake Eries. This study would have been impossible without Landsat's temporal depth; no other free sensor covers this period at 30m.
+
+The MNDWI index exploits Landsat's Green and SWIR bands to distinguish water from built-up surfaces:
+
+$$MNDWI = \frac{Green - SWIR}{Green + SWIR}$$
+
+MNDWI suppresses built-up noise better than NDWI, making it preferable in urban contexts. A limitation is that dark surfaces and dry soils can produce similar low SWIR responses to water, requiring careful validation — particularly in arid regions.
+
+.footnote[Pekel et al. (2016) DOI: 10.1038/nature20584]
 
 ---
 # Reflection
 
-Landsat's most important quality is not its spatial resolution or spectral range — it is its **temporal consistency**. A 30m pixel from 1984 and one from 2024 can be directly compared because of rigorous radiometric calibration and collection reprocessing underpinning the entire archive (Wulder et al., 2022).
+Before preparing this presentation I had not fully appreciated how significant Landsat's archive depth is compared to other free sensors. Sentinel-2 only goes back to 2015, which means many of the most interesting questions about long-term land change simply cannot be answered with it.
 
-This matters because the most important questions in urban remote sensing — how has land surface temperature changed as cities have grown? where has vegetation been lost? how has impervious surface expanded? — are **longitudinal questions** requiring decades of data, not a single snapshot.
+The passive sensor limitation is something I understood conceptually from week 1 but feels more concrete now — cloud cover during the exact periods when land change is happening is a real problem, not just a theoretical one.
 
-At the same time, Landsat's passive nature is a genuine constraint that practical applications must plan around. The future points toward **harmonised Landsat-Sentinel-2 (HLS)** datasets that combine both missions, and further integration with Sentinel-1 SAR to address the cloud cover problem. **Landsat Next (~2030)** will improve spatial resolution to 10–20m and add 26 spectral bands, but the 50-year archive remains the programme's irreplaceable contribution.
-
-For this module, working with Landsat data in SNAP and QGIS this week made clear that the gap between knowing what a sensor measures and being able to extract meaningful information from it is significant. The archive depth and free data policy make Landsat an obvious starting point for learning Earth observation analysis, but the processing steps required — radiometric calibration, atmospheric correction, resampling — demand careful attention before any scientific interpretation is possible.
+Going forward, combining Landsat with SAR data seems like the logical direction, and **Landsat Next (~2030)** with improved resolution and more bands will address some of the current spatial limitations. The 50-year archive however is something no future mission can replicate retroactively.
 
 ---
 # References
