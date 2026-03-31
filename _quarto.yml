@@ -1,21 +1,13 @@
 
 project:
-  type: website
+  type: book
   output-dir: docs
-  resources:
-    - libs/
-    
-website:
+
+book:
   title: "Learning Diary"
-  navbar:
-    left:
-      - href: index.qmd
-        text: Home
-      - href: week1.qmd
-        text: Week 1
-      - href: week2.qmd
-        text: Week 2
-      - href: week3.qmd
-        text: Week 3
-      - href: week4.qmd
-        text: Week 4
+  chapters:
+    - index.qmd
+    - week1.qmd
+    - week2.qmd
+    - week3.qmd
+    - week4.qmd
