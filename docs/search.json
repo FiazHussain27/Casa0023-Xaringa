@@ -4,9 +4,9 @@
     "href": "index.html",
     "title": "Learning Diary",
     "section": "",
-    "text": "title: “Learning Diary”\nformat: html\n\n# Welcome\nThis website contains my weekly learning diary entries for CASA0023.\nUse the navigation bar above to access each week.\n## Weeks\n- [Week 1](week1.qmd)\n- [Week 2](week2.qmd)\n- [Week 3](week 3.qmd)\n- [Week 4](week 4.qmd)",
+    "text": "1 About\nHi, I’m Fiaz Hussain, a student on the MSc Urban Spatial Science programme at UCL’s Centre for Advanced Spatial Analysis (CASA). This is my learning diary for CASA0023 Remotely Sensing Cities and Environments. Each week contains a summary of what was covered, applications of the techniques, and personal reflections on the learning.\nOutside of academia I practise Qi Gong, Tai Chi and meditation — disciplines that have taught me the value of patience, attention to detail, and seeing patterns in complexity. I find these qualities translate surprisingly well to spatial analysis and remote sensing.\n\n\n\nTai Chi practice, Hong Kong\n\n\n\nVideo courtesy of UK Shaolin Southampton",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>index.html</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>About</span>"
     ]
   },
   {
