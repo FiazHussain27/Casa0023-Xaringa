@@ -1,0 +1,152 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Learning Diary",
+    "section": "",
+    "text": "title: “Learning Diary”\nformat: html\n\n# Welcome\nThis website contains my weekly learning diary entries for CASA0023.\nUse the navigation bar above to access each week.\n## Weeks\n- [Week 1](week1.qmd)\n- [Week 2](week2.qmd)\n- [Week 3](week 3.qmd)\n- [Week 4](week 4.qmd)",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>index.html</span>"
+    ]
+  },
+  {
+    "objectID": "week1.html",
+    "href": "week1.html",
+    "title": "2  Week 1",
+    "section": "",
+    "text": "Week 1",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Week 1</span>"
+    ]
+  },
+  {
+    "objectID": "week1.html#summary",
+    "href": "week1.html#summary",
+    "title": "2  Week 1",
+    "section": "2.1 Summary",
+    "text": "2.1 Summary\nThis week introduced satellite remote sensing through Sentinel-2 and Landsat 8/9 data, explored in SNAP and QGIS over Cape Town, South Africa. The practical covered loading multi-spectral imagery, creating colour composites, resampling to a common resolution, masking to a study area boundary, and computing the Tasseled Cap transformation. Figures 1–3 show outputs from the Landsat 9 scene; the true colour composite (B4-B3-B2) renders the scene as the eye would see it, with the Atlantic to the west, the Cape Fold Mountains running north-south, and the Cape Flats urban area to the centre-left. The false colour composite (B5-B4-B3) reassigns NIR to the red gun, making actively photosynthesising vegetation unambiguous — areas visually similar in true colour become immediately distinguishable. Band 3 alone (Figure 3) illustrates that a composite is simply three independent greyscale rasters assigned to colour guns; there is no inherent colour in the data.\n\n\n\n\n\nFigure 1: Landsat 9 true colour composite (B4-B3-B2), Cape Town, June 2022. Source: USGS.\n\n\n\n\n\n\n\n\n\nFigure 2: False colour composite (B5-B4-B3). Red tones indicate active vegetation; urban areas appear grey-blue. Source: USGS.\n\n\n\n\n\n\n\n\n\nFigure 3: Band 3 (red) as a single greyscale layer — each spectral band is an independent reflectance raster. Source: USGS.\n\n\n\n\nFigures 4–6 show the Tasseled Cap feature space computed in SNAP. The Greenness vs Brightness plot (Figure 4) shows the characteristic wedge — a soil line extending toward higher brightness with a separate arm of vegetated pixels. Brightness vs Wetness (Figure 5) shows most pixels at negative wetness values, consistent with the dry impervious and rocky surfaces dominant in this winter scene. The Greenness vs Wetness plot (Figure 6) is more diffuse, reflecting sparse, seasonally dry vegetation cover. Together they demonstrate the transformation’s core value: compressing six raw bands into three physically interpretable dimensions — soil, vegetation and moisture — that Jensen (2016, p. 23) describes as capturing the majority of meaningful spectral variance within a scene.\n\n\n\n\n\nFigures 4–6: Tasseled Cap scatterplots — Greenness vs Brightness; Brightness vs Wetness; Greenness vs Wetness. Cape Town Landsat 9 scene, June 2022.\n\n\n\n\n\n\n\nFigures 4–6: Tasseled Cap scatterplots — Greenness vs Brightness; Brightness vs Wetness; Greenness vs Wetness. Cape Town Landsat 9 scene, June 2022.\n\n\n\n\n\n\n\nFigures 4–6: Tasseled Cap scatterplots — Greenness vs Brightness; Brightness vs Wetness; Greenness vs Wetness. Cape Town Landsat 9 scene, June 2022.\n\n\n\n\nA key limitation of Landsat is its 30m spatial resolution — sufficient for regional analysis but coarse for dense urban environments where a single pixel commonly mixes road, rooftop, vegetation and shadow. Sentinel-2 partially addresses this with 10m visible and NIR bands, but lacks a thermal infrared band entirely, making Landsat the only free option for land surface temperature retrieval. A broader limitation shared by both is their passive nature — cloud cover and darkness render optical imagery unusable precisely when monitoring is most needed. Active SAR sensors overcome this constraint, suggesting that future analytical workflows will increasingly combine optical and SAR data rather than relying on either in isolation.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Week 1</span>"
+    ]
+  },
+  {
+    "objectID": "week1.html#applications",
+    "href": "week1.html#applications",
+    "title": "2  Week 1",
+    "section": "2.2 Applications",
+    "text": "2.2 Applications\nThe Tasseled Cap transformation, introduced by Crist (1985) for Landsat Thematic Mapper data, established the principle that multi-spectral imagery could be rotated into a physically meaningful feature space rather than analysed band by band. Building on this, Zha, Gao and Ni (2003) developed the Normalised Difference Built-up Index (NDBI) from Landsat TM, demonstrating that the contrast between shortwave infrared and NIR reflectance reliably separates impervious surfaces from other land covers — achieving 92.6% accuracy in mapping urban land in Nanjing. The significance of this is not the index itself but what it implies: that domain knowledge about the spectral behaviour of surface materials can substitute, at least partially, for the spatial resolution needed to resolve individual features. As Jensen (2016, pp. 1–18) notes, the fundamental challenge in remote sensing is extracting thematic information from radiometric measurements, and band ratios represent one of the most durable solutions to that challenge because they are physically grounded rather than statistically derived.\nHowever, the limits of this strategy are real. Herold, Couclelis and Clarke (2005) showed that the spatial heterogeneity of urban environments — where land cover changes at scales well below 30m — creates structural ambiguity that spectral indices cannot fully resolve. Higher resolution sensors like Sentinel-2 reduce but do not eliminate this problem, since finer pixels also capture greater within-class spectral variability, making classification harder rather than easier in some contexts. What emerges from reading these studies alongside each other is that resolution improvements and spectral indices are complementary strategies, not alternatives — and that neither removes the need for careful validation. This directly contextualises the Tasseled Cap outputs from this week’s practical: the scatterplots characterise the broad spectral structure of the Cape Town scene, but translating them into a reliable land cover map would require additional steps the practical did not reach.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Week 1</span>"
+    ]
+  },
+  {
+    "objectID": "week1.html#reflections",
+    "href": "week1.html#reflections",
+    "title": "2  Week 1",
+    "section": "2.3 Reflections",
+    "text": "2.3 Reflections\nThe most useful outcome of this week was not the software outputs but the underlying framework: that every pixel in a satellite image is a vector of reflectance values in spectral space, and that the structure of that space encodes information about what is on the ground. SNAP as a tool was frustrating — poorly documented at the critical steps and designed for a specialist audience — but the conceptual shift from thinking about images as pictures to thinking about them as spectral data structures is genuinely transferable to any future work involving land cover analysis or change detection. The broader question this raises is where remote sensing sits relative to other urban data sources: satellite imagery offers spatial coverage and temporal consistency that no ground-based survey can match, but its thematic resolution remains coarse. As cloud computing platforms like GEE make pre-processed imagery increasingly accessible, the skills that will matter most are arguably not software-specific processing steps but the ability to critically interpret what spectral data can and cannot tell us about the urban environment.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Week 1</span>"
+    ]
+  },
+  {
+    "objectID": "week1.html#references",
+    "href": "week1.html#references",
+    "title": "2  Week 1",
+    "section": "2.4 References",
+    "text": "2.4 References",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Week 1</span>"
+    ]
+  },
+  {
+    "objectID": "week2.html",
+    "href": "week2.html",
+    "title": "3  Week 2",
+    "section": "",
+    "text": "Week 2\nHere is the presentation on LandSat sensor and its historic evolution and its application in the real world.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Week 2</span>"
+    ]
+  },
+  {
+    "objectID": "week3.html",
+    "href": "week3.html",
+    "title": "4  Week 3: Corrections and Enhancements",
+    "section": "",
+    "text": "5 Summary\nThis week introduced corrections in remote sensing and why they matter before any quantitative analysis. Satellite imagery is affected by several sources of variation — sensor characteristics, atmospheric scattering and absorption, illumination differences caused by terrain, and geometric misalignment — and corrections aim to reduce these so that pixel values more accurately represent actual surface reflectance.\nRadiometric correction converts raw digital numbers (DN) into physical reflectance values. Atmospheric correction removes haze, scattering and absorption caused by gases and aerosols. The practical introduced Dark Object Subtraction (DOS) as an image-based method that assumes the darkest pixel in a scene should have near-zero reflectance, so any residual value can be attributed to atmospheric path radiance and subtracted from the rest of the image. In practice, DOS did not run successfully on the Level 2 data used here — Level 2 products from USGS are already atmospherically corrected surface reflectance, which is why DOS is not applicable. The correction was therefore skipped and the analysis proceeded directly with the Level 2 data.\nThe practical also covered mosaicking two Landsat tiles (one Landsat 8, one Landsat 9) using terra::mosaic() with a mean function to merge overlapping areas, followed by clipping to a custom study area shapefile for Cape Town. Subsequent enhancements included a 3×3 focal mean filter on Band 4, GLCM texture analysis (homogeneity, 7×7 window) using the GLCMTextures package, data fusion combining the spectral bands with the texture layer, and PCA on the combined dataset.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Week 3: Corrections and Enhancements</span>"
+    ]
+  },
+  {
+    "objectID": "week3.html#ndvi",
+    "href": "week3.html#ndvi",
+    "title": "4  Week 3: Corrections and Enhancements",
+    "section": "6.1 NDVI",
+    "text": "6.1 NDVI\nThe NDVI image highlights vegetation patterns across the Cape Town study area. Higher values indicate denser or healthier vegetation, while lower values correspond to bare soil, built-up areas or water. The reclassified output retains only pixels with NDVI ≥ 0.2, isolating areas with meaningful vegetation cover.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Week 3: Corrections and Enhancements</span>"
+    ]
+  },
+  {
+    "objectID": "week3.html#dn-distribution",
+    "href": "week3.html#dn-distribution",
+    "title": "4  Week 3: Corrections and Enhancements",
+    "section": "6.2 DN Distribution",
+    "text": "6.2 DN Distribution\nThe DN histograms show the frequency distribution of pixel values across spectral bands. These plots illustrate why radiometric correction is necessary when working with raw data — raw DN values vary by band and are influenced by illumination and sensor characteristics before any correction is applied.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Week 3: Corrections and Enhancements</span>"
+    ]
+  },
+  {
+    "objectID": "week3.html#texture",
+    "href": "week3.html#texture",
+    "title": "4  Week 3: Corrections and Enhancements",
+    "section": "6.3 Texture",
+    "text": "6.3 Texture\nTexture analysis captures spatial variation in pixel values using the Grey Level Co-occurrence Matrix (GLCM), which characterises the statistical relationship between neighbouring pixels. The homogeneity measure used here reflects how similar adjacent pixel values are — higher values indicate more uniform surfaces. This is useful for differentiating surfaces that may have similar spectral reflectance but different spatial structure, such as urban areas versus scrubland.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Week 3: Corrections and Enhancements</span>"
+    ]
+  },
+  {
+    "objectID": "week3.html#principal-component-analysis-pca",
+    "href": "week3.html#principal-component-analysis-pca",
+    "title": "4  Week 3: Corrections and Enhancements",
+    "section": "6.4 Principal Component Analysis (PCA)",
+    "text": "6.4 Principal Component Analysis (PCA)\nPCA reduces the dimensionality of the fused spectral and texture dataset by transforming correlated bands into uncorrelated components. The first component captures the majority of variance and tends to reflect dominant surface brightness patterns, while later components highlight more subtle spectral and textural differences that are not visible in individual bands.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Week 3: Corrections and Enhancements</span>"
+    ]
+  },
+  {
+    "objectID": "week3.html#references",
+    "href": "week3.html#references",
+    "title": "4  Week 3: Corrections and Enhancements",
+    "section": "8.1 References",
+    "text": "8.1 References\n\n\nJensen, J.R. (2016) Introductory digital image processing: A remote sensing perspective. Fourth edition. Glenview, Ill: Pearson Education (Pearson series in geographic information science).\n\n\nSchulte To Bühne, H. and Pettorelli, N. (2018) “Better together: Integrating and fusing multispectral and radar satellite imagery to inform biodiversity monitoring, ecological research and conservation science,” Methods in Ecology and Evolution. Edited by N. Lecomte, 9(4), pp. 849–865. Available at: https://doi.org/10.1111/2041-210X.12942.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Week 3: Corrections and Enhancements</span>"
+    ]
+  },
+  {
+    "objectID": "week4.html",
+    "href": "week4.html",
+    "title": "5  Week 4: Policy",
+    "section": "",
+    "text": "6 Summary\nThis week focused on how remotely sensed data can support and monitor urban policy goals. The case study selected is the London Plan (2021), the statutory spatial development strategy for Greater London produced by the Mayor of London. The London Plan is a legally binding document that all London boroughs must follow when making planning decisions. It covers housing, transport, economic development, and the environment.\nThe policy challenge selected here is urban heat — specifically how the London Plan addresses the urban heat island (UHI) effect and what role EO data could play in supporting those policies. London experienced a record 40.2°C heatwave in July 2022, and heat-related mortality in the city is already significant. The London Plan responds to this through several policies:\nThe London Plan explicitly states that green infrastructure should help to address the urban heat island effect (Policy G1), and Policy SI4 requires new developments to demonstrate they have considered and mitigated heat risk through design, orientation, materials and green infrastructure. The Plan however does not specify how these targets should be monitored at the city scale — which is where EO data has a clear role.\nLinks to global goals:",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Week 4: Policy</span>"
+    ]
+  },
+  {
+    "objectID": "week4.html#references",
+    "href": "week4.html#references",
+    "title": "5  Week 4: Policy",
+    "section": "8.1 References",
+    "text": "8.1 References\n\n\nGerasopoulos, E. et al. (2022) “Earth observation: An integral part of a smart and sustainable city,” Environmental Science & Policy, 132, pp. 296–307. Available at: https://doi.org/10.1016/j.envsci.2022.02.033.\n\n\nLi, D. et al. (2022) “Modeling the relationships between historical redlining, urban heat, and heat-related emergency department visits: An examination of 11 texas cities,” Environment and Planning B: Urban Analytics and City Science, 49(3), pp. 933–952. Available at: https://doi.org/10.1177/23998083211039854.\n\n\nMartinez, A.D.L.I. and Labib, S.M. (2023) “Demystifying normalized difference vegetation index (NDVI) for greenness exposure assessments and policy interventions in urban greening,” Environmental Research, 220, p. 115155. Available at: https://doi.org/10.1016/j.envres.2022.115155.\n\n\nWellmann, T. et al. (2020) “Remote sensing in urban planning: Contributions towards ecologically sound policies?” Landscape and Urban Planning, 204, p. 103921. Available at: https://doi.org/10.1016/j.landurbplan.2020.103921.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Week 4: Policy</span>"
+    ]
+  }
+]
