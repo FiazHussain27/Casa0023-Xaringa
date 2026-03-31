@@ -1,0 +1,23 @@
+---
+
+title: "Learning Diary"
+
+format: html
+
+---
+
+\# Welcome
+
+This website contains my weekly learning diary entries for CASA0023.
+
+Use the navigation bar above to access each week.
+
+\## Weeks
+
+\- \[Week 1\](week1.qmd)
+
+\- \[Week 2\](week2.qmd)
+
+\- \[Week 3\](week 3.qmd)
+
+\- \[Week 4\](week 4.qmd)

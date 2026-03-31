@@ -4,7 +4,7 @@ project:
   output-dir: docs
   resources:
     - libs/
-    - Week2.html
+    - Week-2.html
 
 website:
   title: "Learning Diary"
