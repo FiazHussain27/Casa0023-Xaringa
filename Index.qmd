@@ -1,23 +1,11 @@
----
+# About
 
-title: "Learning Diary"
+Hi, I'm Fiaz Hussain, a student on the MSc Urban Spatial Science programme at UCL's Centre for Advanced Spatial Analysis (CASA). This is my learning diary for CASA0023 Remotely Sensing Cities and Environments. Each week contains a summary of what was covered, applications of the techniques, and personal reflections on the learning.
 
-format: html
+Outside of academia I practise Qi Gong, Tai Chi and meditation — disciplines that have taught me the value of patience, attention to detail, and seeing patterns in complexity. I find these qualities translate surprisingly well to spatial analysis and remote sensing.
 
----
+![Tai Chi practice, Hong Kong](https://upload.wikimedia.org/wikipedia/commons/c/ce/20091004_tai_chi_Hong_Kong_Kowloon_6895.jpg)
 
-\# Welcome
+{{< video https://www.youtube.com/watch?v=83RmLAnpqE8 >}}
 
-This website contains my weekly learning diary entries for CASA0023.
-
-Use the navigation bar above to access each week.
-
-\## Weeks
-
-\- \[Week 1\](week1.qmd)
-
-\- \[Week 2\](week2.qmd)
-
-\- \[Week 3\](week 3.qmd)
-
-\- \[Week 4\](week 4.qmd)
+*Video courtesy of [UK Shaolin Southampton](https://www.youtube.com/watch?v=83RmLAnpqE8)*
