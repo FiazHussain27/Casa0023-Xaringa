@@ -2,8 +2,9 @@
 project:
   type: website
   output-dir: docs
-  render:
-    - "*.qmd"
+  resources:
+    - libs/
+    - Week2.html
 
 website:
   title: "Learning Diary"
