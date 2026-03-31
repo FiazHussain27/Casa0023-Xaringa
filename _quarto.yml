@@ -4,13 +4,7 @@ project:
   output-dir: docs
   resources:
     - libs/
-    - Week-2.html
-render:
-    - index.qmd
-    - week1.qmd
-    - week2.qmd
-    - week3.qmd
-    - week4.qmd
+    
 website:
   title: "Learning Diary"
   navbar:
