@@ -148,5 +148,25 @@
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Week 4: Policy</span>"
     ]
+  },
+  {
+    "objectID": "week5.html",
+    "href": "week5.html",
+    "title": "6  Week 5: Google Earth Engine I",
+    "section": "",
+    "text": "7 Summary\nThis week introduced Google Earth Engine (GEE), which is a cloud-based platform for geospatial analysis. The main difference from what we have been doing in R is that with GEE the data stays on Google’s servers and the code is sent there to run — which means we are not limited by our own computer’s memory or processing power. This is a big deal for remote sensing because satellite imagery files are enormous and working with them locally in R was already quite slow.\nGEE uses JavaScript rather than R, which took some getting used to. The basic syntax is not too different but the way GEE handles data — through image collections, filters and reducers — is quite different from how terra or sf work in R. The practical walked through loading Landsat 9 data for Delhi, filtering by date and cloud cover, applying scaling factors to convert the integer values back to surface reflectance, and creating a median composite to deal with the fact that multiple images cover the same area.\nThe scaling factor step was something I had encountered in week 3 but it made more sense here — GEE stores Landsat data as integers for efficiency and the factor of 0.0000275 with an offset of -0.2 converts them back to physical reflectance values. The median composite was interesting because it provides a cleaner image than any single scene by effectively removing clouds and other transient features — wherever a pixel is cloudy in one image, the median value from the other images in the collection is used instead.\nFigure 1: Landsat 8 median composite true colour (Bands 4-3-2) over Delhi, clipped to the city boundary. Source: USGS Landsat via GEE.\nThe practical also covered texture analysis and PCA in GEE, which we had done previously in R. In GEE the GLCM texture function requires integer inputs, so the surface reflectance values need to be multiplied by 1000 before applying it. PCA in GEE is considerably more complex than in R — it required writing a custom function rather than just calling prcomp() — but the underlying principle is the same.\nFigure 2: First principal component (PC1) over Delhi. Light tones indicate high variance areas — predominantly the dense urban core. Source: USGS Landsat via GEE.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Week 5: Google Earth Engine I</span>"
+    ]
+  },
+  {
+    "objectID": "week5.html#references",
+    "href": "week5.html#references",
+    "title": "6  Week 5: Google Earth Engine I",
+    "section": "9.1 References",
+    "text": "9.1 References\n\n\nAmani, M. et al. (2020) “Google earth engine cloud computing platform for remote sensing big data applications: A comprehensive review,” IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing, 13, pp. 5326–5350. Available at: https://doi.org/10.1109/JSTARS.2020.3021052.\n\n\nGorelick, N. et al. (2017) “Google earth engine: Planetary-scale geospatial analysis for everyone,” Remote Sensing of Environment, 202, pp. 18–27. Available at: https://doi.org/10.1016/j.rse.2017.06.031.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Week 5: Google Earth Engine I</span>"
+    ]
   }
 ]
