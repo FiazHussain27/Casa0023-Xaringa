@@ -12,3 +12,5 @@ book:
     - week3.qmd
     - week4.qmd
     - week5.qmd
+bibliography: references.bib
+csl: harvard-cite-them-right.csl
