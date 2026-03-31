@@ -32,7 +32,7 @@ lsatMeta
 
 l8_boa_ref <- lsatMeta
 
-Ok # surface reflectance with DOS
+# surface reflectance with DOS
 
 #l8_boa_ref <- radCor(lsatMeta, metaData, method = "dos")
 
