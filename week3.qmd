@@ -2,8 +2,7 @@
 title: "Week 3: Corrections and Enhancements"
 author: "Fiaz Hussain"
 format: html
-bibliography: references.bib
-csl: harvard-cite-them-right.csl
+
 ---
 
 # Summary

@@ -2,8 +2,7 @@
 title: "Week 4: Policy"
 author: "Fiaz Hussain"
 format: html
-bibliography: references.bib
-csl: harvard-cite-them-right.csl
+
 ---
 
 # Summary

@@ -15,4 +15,4 @@ book:
 
 bibliography: references.bib
 csl: harvard-cite-them-right.csl
-reference-location: document
+reference-location: block

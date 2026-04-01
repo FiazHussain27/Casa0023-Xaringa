@@ -2,8 +2,6 @@
 title: "Week 5: Google Earth Engine I"
 author: "Fiaz Hussain"
 format: html
-bibliography: references.bib
-csl: harvard-cite-them-right.csl
 ---
 
 # Summary
