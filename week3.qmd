@@ -2,7 +2,6 @@
 title: "Week 3: Corrections and Enhancements"
 author: "Fiaz Hussain"
 format: html
-
 ---
 
 # Summary
@@ -62,8 +61,3 @@ The question of when corrections are actually necessary is more nuanced than it 
 The DOS failure this week was actually clarifying rather than frustrating. Trying to run DOS on a Level 2 product and having it fail made the distinction between Level 1 (digital numbers) and Level 2 (surface reflectance) much more concrete than the lecture description alone. It also raised a question I had not thought about before: if Level 2 products are already corrected, at what point does it make sense to go back and work with raw Level 1 data and apply DOS manually? The answer is probably rarely for standard analysis, but the exercise of understanding what DOS is doing — subtracting the darkest pixel value on the assumption it represents path radiance — helps interpret what the Level 2 correction has already done.
 
 The PCA output was harder to interpret than expected. The first component clearly captured overall brightness, but the later components showed spatial patterns that were difficult to connect back to specific land cover types without more domain knowledge of the area. This feels like a method where the technique is straightforward to apply but much harder to interpret meaningfully — which is a recurring theme in this module so far.
-
-## References
-
-::: {#refs}
-:::

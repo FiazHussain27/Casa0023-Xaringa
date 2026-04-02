@@ -40,9 +40,4 @@ knitr::include_graphics("figures/PCA_bands_1_and_2.jpg")
 
 The shift from R to JavaScript felt quite abrupt this week. In R I have at least some familiarity with the syntax from previous modules, but JavaScript in GEE has its own logic — particularly the way functions are defined and called, and the way the map and console interact with the code. I found myself spending more time debugging syntax errors than actually thinking about the remote sensing concepts, which was frustrating.
 
-That said, the speed difference between GEE and R is genuinely impressive. Running texture and PCA on a clipped Landsat image in GEE was near-instant compared to the same operations in week 3 which took several minutes. I can see why GEE has become the standard tool for large-scale remote sensing analysis. The practical only scratched the surface of what it can do — the data catalogue alone has hundreds of datasets I had not heard of before, and the ability to build interactive applications from GEE code is something I would like to explore further.
-
-## References
-
-::: {#refs}
-:::
+That said, the speed difference between GEE and R is genuinely impressive. Running texture and PCA on a clipped Landsat image in GEE was near-instant compared to the same operations in week 3 which took several minutes. I can see why GEE has become the standard tool for large-scale remote sensing analysis. The practical only scratched the surface of what it can do — the data catalogue alone has hundreds of dataset I had not heard of before, and the ability to build interactive applications from GEE code is something I would like to explore further.

@@ -49,8 +49,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./week2.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./week5.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -102,7 +101,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./week1.html"><span class="chapter-title">Week 1</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./references.html">References</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -134,7 +133,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./week1.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Week 1</span></a>
+  <a href="./week1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Week 1</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -159,7 +158,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
+  <a href="./references.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -173,12 +172,7 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#week-1" id="toc-week-1" class="nav-link active" data-scroll-target="#week-1">Week 1</a>
-  <ul class="collapse">
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
-  <li><a href="#applications" id="toc-applications" class="nav-link" data-scroll-target="#applications">Applications</a></li>
-  <li><a href="#reflections" id="toc-reflections" class="nav-link" data-scroll-target="#reflections">Reflections</a></li>
-  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link active" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
     </div>
@@ -187,7 +181,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">Week 1</span></h1>
+<h1 class="title">Week 1</h1>
 </div>
 
 
@@ -204,95 +198,77 @@ div.csl-indent {
 </header>
 
 
-<section id="week-1" class="level1">
-<h1>Week 1</h1>
-<section id="summary" class="level2">
-<h2 class="anchored" data-anchor-id="summary">Summary</h2>
-<p>This week introduced satellite remote sensing through Sentinel-2 and Landsat 8/9 data, explored in SNAP and QGIS over Cape Town, South Africa. The practical covered loading multi-spectral imagery, creating colour composites, resampling to a common resolution, masking to a study area boundary, and computing the Tasseled Cap transformation. Figures 1–3 show outputs from the Landsat 9 scene; the true colour composite (B4-B3-B2) renders the scene as the eye would see it, with the Atlantic to the west, the Cape Fold Mountains running north-south, and the Cape Flats urban area to the centre-left. The false colour composite (B5-B4-B3) reassigns NIR to the red gun, making actively photosynthesising vegetation unambiguous — areas visually similar in true colour become immediately distinguishable. Band 3 alone (Figure 3) illustrates that a composite is simply three independent greyscale rasters assigned to colour guns; there is no inherent colour in the data.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figures/RGB_Landsat_clipped_RGB.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption>Figure 1: Landsat 9 true colour composite (B4-B3-B2), Cape Town, June 2022. Source: USGS.</figcaption>
-</figure>
+<section id="references" class="level1">
+<h1>References</h1>
+<div id="refs" class="references csl-bib-body" role="list">
+<div id="ref-amaniGoogleEarthEngine2020" class="csl-entry" role="listitem">
+Amani, M. <em>et al.</em> (2020) <span>“Google earth engine cloud
+computing platform for remote sensing big data applications: A
+comprehensive review,”</span> <em><span>IEEE</span> Journal of Selected
+Topics in Applied Earth Observations and Remote Sensing</em>, 13, pp.
+5326–5350. Available at: <a href="https://doi.org/10.1109/JSTARS.2020.3021052">https://doi.org/10.1109/JSTARS.2020.3021052</a>.
 </div>
-</div>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figures/False_Landsat_clipped_RGB.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption>Figure 2: False colour composite (B5-B4-B3). Red tones indicate active vegetation; urban areas appear grey-blue. Source: USGS.</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figures/LC09_L2SP_175083_20220626_20230409_02_T1Landsat_clipped_sr_b3.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption>Figure 3: Band 3 (red) as a single greyscale layer — each spectral band is an independent reflectance raster. Source: USGS.</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>Figures 4–6 show the Tasseled Cap feature space computed in SNAP. The Greenness vs Brightness plot (Figure 4) shows the characteristic wedge — a soil line extending toward higher brightness with a separate arm of vegetated pixels. Brightness vs Wetness (Figure 5) shows most pixels at negative wetness values, consistent with the dry impervious and rocky surfaces dominant in this winter scene. The Greenness vs Wetness plot (Figure 6) is more diffuse, reflecting sparse, seasonally dry vegetation cover. Together they demonstrate the transformation’s core value: compressing six raw bands into three physically interpretable dimensions — soil, vegetation and moisture — that <span class="citation" data-cites="jensenIntroductoryDigitalImage2016">Jensen (<a href="references.html#ref-jensenIntroductoryDigitalImage2016" role="doc-biblioref">2016, p. 23</a>)</span> describes as capturing the majority of meaningful spectral variance within a scene.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figures/Greeness vs brightness scatterplot.png" class="img-fluid figure-img" style="width:32.0%"></p>
-<figcaption>Figures 4–6: Tasseled Cap scatterplots — Greenness vs Brightness; Brightness vs Wetness; Greenness vs Wetness. Cape Town Landsat 9 scene, June 2022.</figcaption>
-</figure>
-</div>
-</div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figures/Brightness vs wetness scatterplot.png" class="img-fluid figure-img" style="width:32.0%"></p>
-<figcaption>Figures 4–6: Tasseled Cap scatterplots — Greenness vs Brightness; Brightness vs Wetness; Greenness vs Wetness. Cape Town Landsat 9 scene, June 2022.</figcaption>
-</figure>
-</div>
-</div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figures/Greenness vs Wetness Scatterplot.png" class="img-fluid figure-img" style="width:32.0%"></p>
-<figcaption>Figures 4–6: Tasseled Cap scatterplots — Greenness vs Brightness; Brightness vs Wetness; Greenness vs Wetness. Cape Town Landsat 9 scene, June 2022.</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>A key limitation of Landsat is its 30m spatial resolution — sufficient for regional analysis but coarse for dense urban environments where a single pixel commonly mixes road, rooftop, vegetation and shadow. Sentinel-2 partially addresses this with 10m visible and NIR bands, but lacks a thermal infrared band entirely, making Landsat the only free option for land surface temperature retrieval. A broader limitation shared by both is their passive nature — cloud cover and darkness render optical imagery unusable precisely when monitoring is most needed. Active SAR sensors overcome this constraint, suggesting that future analytical workflows will increasingly combine optical and SAR data rather than relying on either in isolation.</p>
-</section>
-<section id="applications" class="level2">
-<h2 class="anchored" data-anchor-id="applications">Applications</h2>
-<p>The Tasseled Cap transformation, introduced by <span class="citation" data-cites="cristTMTasseledCap1985">Crist (<a href="references.html#ref-cristTMTasseledCap1985" role="doc-biblioref">1985</a>)</span> for Landsat Thematic Mapper data, established the principle that multi-spectral imagery could be rotated into a physically meaningful feature space rather than analysed band by band. Building on this, <span class="citation" data-cites="zhaUseNormalizedDifference2003">Zha, Gao and Ni (<a href="references.html#ref-zhaUseNormalizedDifference2003" role="doc-biblioref">2003</a>)</span> developed the Normalised Difference Built-up Index (NDBI) from Landsat TM, demonstrating that the contrast between shortwave infrared and NIR reflectance reliably separates impervious surfaces from other land covers — achieving 92.6% accuracy in mapping urban land in Nanjing. The significance of this is not the index itself but what it implies: that domain knowledge about the spectral behaviour of surface materials can substitute, at least partially, for the spatial resolution needed to resolve individual features. As <span class="citation" data-cites="jensenIntroductoryDigitalImage2016">Jensen (<a href="references.html#ref-jensenIntroductoryDigitalImage2016" role="doc-biblioref">2016, pp. 1–18</a>)</span> notes, the fundamental challenge in remote sensing is extracting thematic information from radiometric measurements, and band ratios represent one of the most durable solutions to that challenge because they are physically grounded rather than statistically derived.</p>
-<p>However, the limits of this strategy are real. <span class="citation" data-cites="heroldRoleSpatialMetrics2005">Herold, Couclelis and Clarke (<a href="references.html#ref-heroldRoleSpatialMetrics2005" role="doc-biblioref">2005</a>)</span> showed that the spatial heterogeneity of urban environments — where land cover changes at scales well below 30m — creates structural ambiguity that spectral indices cannot fully resolve. Higher resolution sensors like Sentinel-2 reduce but do not eliminate this problem, since finer pixels also capture greater within-class spectral variability, making classification harder rather than easier in some contexts. What emerges from reading these studies alongside each other is that resolution improvements and spectral indices are complementary strategies, not alternatives — and that neither removes the need for careful validation. This directly contextualises the Tasseled Cap outputs from this week’s practical: the scatterplots characterise the broad spectral structure of the Cape Town scene, but translating them into a reliable land cover map would require additional steps the practical did not reach.</p>
-</section>
-<section id="reflections" class="level2">
-<h2 class="anchored" data-anchor-id="reflections">Reflections</h2>
-<p>The most useful outcome of this week was not the software outputs but the underlying framework: that every pixel in a satellite image is a vector of reflectance values in spectral space, and that the structure of that space encodes information about what is on the ground. SNAP as a tool was frustrating — poorly documented at the critical steps and designed for a specialist audience — but the conceptual shift from thinking about images as pictures to thinking about them as spectral data structures is genuinely transferable to any future work involving land cover analysis or change detection. The broader question this raises is where remote sensing sits relative to other urban data sources: satellite imagery offers spatial coverage and temporal consistency that no ground-based survey can match, but its thematic resolution remains coarse. As cloud computing platforms like GEE make pre-processed imagery increasingly accessible, the skills that will matter most are arguably not software-specific processing steps but the ability to critically interpret what spectral data can and cannot tell us about the urban environment.</p>
-
-
-<div id="refs" class="references csl-bib-body" role="list" style="display: none">
 <div id="ref-cristTMTasseledCap1985" class="csl-entry" role="listitem">
-Crist, E.P. (1985) <span>“A <span>TM</span> tasseled cap equivalent transformation for reflectance factor data,”</span> <em>Remote Sensing of Environment</em>, 17(3), pp. 301–306. Available at: <a href="https://doi.org/10.1016/0034-4257(85)90102-6">https://doi.org/10.1016/0034-4257(85)90102-6</a>.
+Crist, E.P. (1985) <span>“A <span>TM</span> tasseled cap equivalent
+transformation for reflectance factor data,”</span> <em>Remote Sensing
+of Environment</em>, 17(3), pp. 301–306. Available at: <a href="https://doi.org/10.1016/0034-4257(85)90102-6">https://doi.org/10.1016/0034-4257(85)90102-6</a>.
+</div>
+<div id="ref-gerasopoulosEarthObservationIntegral2022" class="csl-entry" role="listitem">
+Gerasopoulos, E. <em>et al.</em> (2022) <span>“Earth observation: An
+integral part of a smart and sustainable city,”</span> <em>Environmental
+Science &amp; Policy</em>, 132, pp. 296–307. Available at: <a href="https://doi.org/10.1016/j.envsci.2022.02.033">https://doi.org/10.1016/j.envsci.2022.02.033</a>.
+</div>
+<div id="ref-gorelickGoogleEarthEngine2017" class="csl-entry" role="listitem">
+Gorelick, N. <em>et al.</em> (2017) <span>“Google earth engine:
+Planetary-scale geospatial analysis for everyone,”</span> <em>Remote
+Sensing of Environment</em>, 202, pp. 18–27. Available at: <a href="https://doi.org/10.1016/j.rse.2017.06.031">https://doi.org/10.1016/j.rse.2017.06.031</a>.
 </div>
 <div id="ref-heroldRoleSpatialMetrics2005" class="csl-entry" role="listitem">
-Herold, M., Couclelis, H. and Clarke, K.C. (2005) <span>“The role of spatial metrics in the analysis and modeling of urban land use change,”</span> <em>Computers, Environment and Urban Systems</em>, 29(4), pp. 369–399. Available at: <a href="https://doi.org/10.1016/j.compenvurbsys.2003.12.001">https://doi.org/10.1016/j.compenvurbsys.2003.12.001</a>.
+Herold, M., Couclelis, H. and Clarke, K.C. (2005) <span>“The role of
+spatial metrics in the analysis and modeling of urban land use
+change,”</span> <em>Computers, Environment and Urban Systems</em>,
+29(4), pp. 369–399. Available at: <a href="https://doi.org/10.1016/j.compenvurbsys.2003.12.001">https://doi.org/10.1016/j.compenvurbsys.2003.12.001</a>.
 </div>
 <div id="ref-jensenIntroductoryDigitalImage2016" class="csl-entry" role="listitem">
-Jensen, J.R. (2016) <em>Introductory digital image processing: A remote sensing perspective</em>. Fourth edition. Glenview, Ill: Pearson Education (Pearson series in geographic information science).
+Jensen, J.R. (2016) <em>Introductory digital image processing: A remote
+sensing perspective</em>. Fourth edition. Glenview, Ill: Pearson
+Education (Pearson series in geographic information science).
+</div>
+<div id="ref-liModelingRelationshipsHistorical2022" class="csl-entry" role="listitem">
+Li, D. <em>et al.</em> (2022) <span>“Modeling the relationships between
+historical redlining, urban heat, and heat-related emergency department
+visits: An examination of 11 texas cities,”</span> <em>Environment and
+Planning B: Urban Analytics and City Science</em>, 49(3), pp. 933–952.
+Available at: <a href="https://doi.org/10.1177/23998083211039854">https://doi.org/10.1177/23998083211039854</a>.
+</div>
+<div id="ref-martinezDemystifyingNormalizedDifference2023" class="csl-entry" role="listitem">
+Martinez, A.D.L.I. and Labib, S.M. (2023) <span>“Demystifying normalized
+difference vegetation index (<span>NDVI</span>) for greenness exposure
+assessments and policy interventions in urban greening,”</span>
+<em>Environmental Research</em>, 220, p. 115155. Available at: <a href="https://doi.org/10.1016/j.envres.2022.115155">https://doi.org/10.1016/j.envres.2022.115155</a>.
+</div>
+<div id="ref-schultetobuhneBetterTogetherIntegrating2018a" class="csl-entry" role="listitem">
+Schulte To Bühne, H. and Pettorelli, N. (2018) <span>“Better together:
+Integrating and fusing multispectral and radar satellite imagery to
+inform biodiversity monitoring, ecological research and conservation
+science,”</span> <em>Methods in Ecology and Evolution</em>. Edited by N.
+Lecomte, 9(4), pp. 849–865. Available at: <a href="https://doi.org/10.1111/2041-210X.12942">https://doi.org/10.1111/2041-210X.12942</a>.
+</div>
+<div id="ref-wellmannRemoteSensingUrban2020" class="csl-entry" role="listitem">
+Wellmann, T. <em>et al.</em> (2020) <span>“Remote sensing in urban
+planning: Contributions towards ecologically sound policies?”</span>
+<em>Landscape and Urban Planning</em>, 204, p. 103921. Available at: <a href="https://doi.org/10.1016/j.landurbplan.2020.103921">https://doi.org/10.1016/j.landurbplan.2020.103921</a>.
 </div>
 <div id="ref-zhaUseNormalizedDifference2003" class="csl-entry" role="listitem">
-Zha, Y., Gao, J. and Ni, S. (2003) <span>“Use of normalized difference built-up index in automatically mapping urban areas from <span>TM</span> imagery,”</span> <em>International Journal of Remote Sensing</em>, 24(3), pp. 583–594. Available at: <a href="https://doi.org/10.1080/01431160304987">https://doi.org/10.1080/01431160304987</a>.
+Zha, Y., Gao, J. and Ni, S. (2003) <span>“Use of normalized difference
+built-up index in automatically mapping urban areas from <span>TM</span>
+imagery,”</span> <em>International Journal of Remote Sensing</em>,
+24(3), pp. 583–594. Available at: <a href="https://doi.org/10.1080/01431160304987">https://doi.org/10.1080/01431160304987</a>.
 </div>
 </div>
-</section>
+<hr>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -698,14 +674,11 @@ Zha, Y., Gao, J. and Ni, S. (2003) <span>“Use of normalized difference built-u
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="About">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">About</span></span>
+      <a href="./week5.html" class="pagination-link" aria-label="Week 5: Google Earth Engine I">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Week 5: Google Earth Engine I</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./week2.html" class="pagination-link" aria-label="Week 2">
-        <span class="nav-page-text"><span class="chapter-title">Week 2</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

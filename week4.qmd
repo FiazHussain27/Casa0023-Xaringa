@@ -2,7 +2,6 @@
 title: "Week 4: Policy"
 author: "Fiaz Hussain"
 format: html
-
 ---
 
 # Summary
@@ -52,8 +51,3 @@ The most interesting thing this week was seeing how much detail sits behind a si
 The gap between what remote sensing can technically do and what policy actually needs also became clearer. The London Plan sets targets in terms of UGF scores and percentage green cover, but satellite-derived NDVI is not a direct measure of either. Translating between the sensor output and the policy metric requires additional steps — and potentially additional validation — that are rarely discussed in the remote sensing literature but are critical for actual policy use.
 
 The connection between heat exposure and deprivation in @liModelingRelationshipsHistorical2022 was striking. It raises a question that the London Plan does not fully answer: even if green infrastructure targets are met city-wide, are they being met in the places that need them most? That is an equity question as much as a technical one, and it suggests that any EO-based monitoring framework for the London Plan should be reporting at a sub-borough level rather than aggregating across the whole city.
-
-## References
-
-::: {#refs}
-:::

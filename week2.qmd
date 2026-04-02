@@ -1,8 +1,6 @@
 
 ---
 title: "Week 2"
-bibliography: references.bib
-csl: harvard-cite-them-right.csl
 ---
 # Week 2 {.unnumbered}
 

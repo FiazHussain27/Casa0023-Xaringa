@@ -1,8 +1,7 @@
 ---
 title: "Week 1"
-
 ---
-# Week 1 {.unnumbered}
+# Week 1
 
 ## Summary
 
@@ -41,8 +40,3 @@ However, the limits of this strategy are real. @heroldRoleSpatialMetrics2005 sho
 ## Reflections
 
 The most useful outcome of this week was not the software outputs but the underlying framework: that every pixel in a satellite image is a vector of reflectance values in spectral space, and that the structure of that space encodes information about what is on the ground. SNAP as a tool was frustrating — poorly documented at the critical steps and designed for a specialist audience — but the conceptual shift from thinking about images as pictures to thinking about them as spectral data structures is genuinely transferable to any future work involving land cover analysis or change detection. The broader question this raises is where remote sensing sits relative to other urban data sources: satellite imagery offers spatial coverage and temporal consistency that no ground-based survey can match, but its thematic resolution remains coarse. As cloud computing platforms like GEE make pre-processed imagery increasingly accessible, the skills that will matter most are arguably not software-specific processing steps but the ability to critically interpret what spectral data can and cannot tell us about the urban environment.
-
-## References
-
-::: {#refs}
-:::
