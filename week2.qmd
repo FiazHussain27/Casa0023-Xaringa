@@ -1,8 +1,10 @@
 
 ---
 title: "Week 2"
+author: "Fiaz Hussain"
+format: html
 ---
-# Week 2 {.unnumbered}
+
 
 Here is the presentation on LandSat sensor  and its historic evolution and its application in the real world. 
 
