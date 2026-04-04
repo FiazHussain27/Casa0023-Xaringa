@@ -20,16 +20,6 @@
     ]
   },
   {
-    "objectID": "week1.html#summary",
-    "href": "week1.html#summary",
-    "title": "Week 1",
-    "section": "Summary",
-    "text": "Summary\nThis week introduced satellite remote sensing through Sentinel-2 and Landsat 8/9 data, explored in SNAP and QGIS over Cape Town, South Africa. The practical covered loading multi-spectral imagery, creating colour composites, resampling to a common resolution, masking to a study area boundary, and computing the Tasseled Cap transformation. Figures 1–3 show outputs from the Landsat 9 scene; the true colour composite (B4-B3-B2) renders the scene as the eye would see it, with the Atlantic to the west, the Cape Fold Mountains running north-south, and the Cape Flats urban area to the centre-left. The false colour composite (B5-B4-B3) reassigns NIR to the red gun, making actively photosynthesising vegetation unambiguous — areas visually similar in true colour become immediately distinguishable. Band 3 alone (Figure 3) illustrates that a composite is simply three independent greyscale rasters assigned to colour guns; there is no inherent colour in the data.\n\n\n\n\n\nFigure 1: Landsat 9 true colour composite (B4-B3-B2), Cape Town, June 2022. Source: USGS.\n\n\n\n\n\n\n\n\n\nFigure 2: False colour composite (B5-B4-B3). Red tones indicate active vegetation; urban areas appear grey-blue. Source: USGS.\n\n\n\n\n\n\n\n\n\nFigure 3: Band 3 (red) as a single greyscale layer — each spectral band is an independent reflectance raster. Source: USGS.\n\n\n\n\nFigures 4–6 show the Tasseled Cap feature space computed in SNAP. The Greenness vs Brightness plot (Figure 4) shows the characteristic wedge — a soil line extending toward higher brightness with a separate arm of vegetated pixels. Brightness vs Wetness (Figure 5) shows most pixels at negative wetness values, consistent with the dry impervious and rocky surfaces dominant in this winter scene. The Greenness vs Wetness plot (Figure 6) is more diffuse, reflecting sparse, seasonally dry vegetation cover. Together they demonstrate the transformation’s core value: compressing six raw bands into three physically interpretable dimensions — soil, vegetation and moisture — that Jensen (2016, p. 23) describes as capturing the majority of meaningful spectral variance within a scene.\n\n\n\n\n\nFigures 4–6: Tasseled Cap scatterplots — Greenness vs Brightness; Brightness vs Wetness; Greenness vs Wetness. Cape Town Landsat 9 scene, June 2022.\n\n\n\n\n\n\n\nFigures 4–6: Tasseled Cap scatterplots — Greenness vs Brightness; Brightness vs Wetness; Greenness vs Wetness. Cape Town Landsat 9 scene, June 2022.\n\n\n\n\n\n\n\nFigures 4–6: Tasseled Cap scatterplots — Greenness vs Brightness; Brightness vs Wetness; Greenness vs Wetness. Cape Town Landsat 9 scene, June 2022.\n\n\n\n\nA key limitation of Landsat is its 30m spatial resolution — sufficient for regional analysis but coarse for dense urban environments where a single pixel commonly mixes road, rooftop, vegetation and shadow. Sentinel-2 partially addresses this with 10m visible and NIR bands, but lacks a thermal infrared band entirely, making Landsat the only free option for land surface temperature retrieval. A broader limitation shared by both is their passive nature — cloud cover and darkness render optical imagery unusable precisely when monitoring is most needed. Active SAR sensors overcome this constraint, suggesting that future analytical workflows will increasingly combine optical and SAR data rather than relying on either in isolation.",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Week 1</span>"
-    ]
-  },
-  {
     "objectID": "week1.html#applications",
     "href": "week1.html#applications",
     "title": "Week 1",
@@ -54,7 +44,7 @@
     "href": "week2.html",
     "title": "Week 2",
     "section": "",
-    "text": "Week 2\nHere is the presentation on LandSat sensor and its historic evolution and its application in the real world.",
+    "text": "Here is the presentation on LandSat sensor and its historic evolution and its application in the real world.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Week 2</span>"
     ]
@@ -127,6 +117,56 @@
     "text": "Summary\nThis week introduced Google Earth Engine (GEE), which is a cloud-based platform for geospatial analysis. The main difference from what we have been doing in R is that with GEE the data stays on Google’s servers and the code is sent there to run — which means we are not limited by our own computer’s memory or processing power. This is a big deal for remote sensing because satellite imagery files are enormous and working with them locally in R was already quite slow.\nGEE uses JavaScript rather than R, which took some getting used to. The basic syntax is not too different but the way GEE handles data — through image collections, filters and reducers — is quite different from how terra or sf work in R. The practical walked through loading Landsat 9 data for Delhi, filtering by date and cloud cover, applying scaling factors to convert the integer values back to surface reflectance, and creating a median composite to deal with the fact that multiple images cover the same area.\nThe scaling factor step was something I had encountered in week 3 but it made more sense here — GEE stores Landsat data as integers for efficiency and the factor of 0.0000275 with an offset of -0.2 converts them back to physical reflectance values. The median composite was interesting because it provides a cleaner image than any single scene by effectively removing clouds and other transient features — wherever a pixel is cloudy in one image, the median value from the other images in the collection is used instead.\n\n\n\n\n\nFigure 1: Landsat 8 median composite true colour (Bands 4-3-2) over Delhi, clipped to the city boundary. Source: USGS Landsat via GEE.\n\n\n\n\nThe practical also covered texture analysis and PCA in GEE, which we had done previously in R. In GEE the GLCM texture function requires integer inputs, so the surface reflectance values need to be multiplied by 1000 before applying it. PCA in GEE is considerably more complex than in R — it required writing a custom function rather than just calling prcomp() — but the underlying principle is the same.\n\n\n\n\n\nFigure 2: First principal component (PC1) over Delhi. Light tones indicate high variance areas — predominantly the dense urban core. Source: USGS Landsat via GEE.\n\n\n\n\n\n\nApplications\nGorelick et al. (2017) describe GEE as enabling planetary-scale geospatial analysis that would previously have required access to supercomputing infrastructure. The key innovation is not the algorithms themselves — most of what GEE can do could in principle be done in R or Python — but the fact that the data is co-located with the computing resources, removing the bottleneck of downloading and storing large datasets locally. For a student working on a laptop this difference is immediately obvious: filtering and compositing a year of Landsat data over Delhi took seconds in GEE, whereas the equivalent operation in R in week 3 took several minutes on two tiles.\n\n\n\n\n\nFigure 3: GLCM texture (contrast and dissimilarity) over Delhi. The magenta tones highlight areas of high textural variation — predominantly the dense and heterogeneous urban core. Source: USGS Landsat via GEE.\n\n\n\n\nAmani et al. (2020) review over 500 GEE applications and find that land use and land cover change, vegetation monitoring and urban analysis are the three most common application domains. For urban remote sensing specifically, GEE’s temporal depth — the full Landsat archive back to 1984 — combined with cloud-based processing makes it practical to run analyses that would be computationally prohibitive locally. The ability to compute a cloud-free median composite over an entire year rather than relying on a single scene is a direct example of this.\n\n\n\n\n\nFigure 4: PCA bands 1 and 2 combined over Delhi. The purple and red tones represent different combinations of the two dominant components of spectral variance. Source: USGS Landsat via GEE.\n\n\n\n\n\n\nReflection\nThe shift from R to JavaScript felt quite abrupt this week. In R I have at least some familiarity with the syntax from previous modules, but JavaScript in GEE has its own logic — particularly the way functions are defined and called, and the way the map and console interact with the code. I found myself spending more time debugging syntax errors than actually thinking about the remote sensing concepts, which was frustrating.\nThat said, the speed difference between GEE and R is genuinely impressive. Running texture and PCA on a clipped Landsat image in GEE was near-instant compared to the same operations in week 3 which took several minutes. I can see why GEE has become the standard tool for large-scale remote sensing analysis. The practical only scratched the surface of what it can do — the data catalogue alone has hundreds of dataset I had not heard of before, and the ability to build interactive applications from GEE code is something I would like to explore further.\n\n\n\n\nAmani, M. et al. (2020) “Google earth engine cloud computing platform for remote sensing big data applications: A comprehensive review,” IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing, 13, pp. 5326–5350. Available at: https://doi.org/10.1109/JSTARS.2020.3021052.\n\n\nGorelick, N. et al. (2017) “Google earth engine: Planetary-scale geospatial analysis for everyone,” Remote Sensing of Environment, 202, pp. 18–27. Available at: https://doi.org/10.1016/j.rse.2017.06.031.",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Week 5: Google Earth Engine I</span>"
+    ]
+  },
+  {
+    "objectID": "week6.html",
+    "href": "week6.html",
+    "title": "Week 6: Remote Sensing Classification I",
+    "section": "",
+    "text": "1. Summary\nThis week focused on the transition from pixel-level spectral analysis to Supervised Image Classification. The core objective was to transform raw reflectance values from Sentinel-2 into thematic land-cover maps. Following the CASA0023 curriculum (maclachlan2024?), we explored the mechanics of Decision Trees (CART) and Random Forest (RF) algorithms.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Week 6: Remote Sensing Classification I</span>"
+    ]
+  },
+  {
+    "objectID": "week6.html#summary",
+    "href": "week6.html#summary",
+    "title": "Week 6: Remote Sensing Classification I",
+    "section": "",
+    "text": "The Classification Workflow\nThe process in Google Earth Engine (GEE) follows a linear but iterative pipeline: 1. Preprocessing: Cloud masking using the QA60 band and median-reducing an ImageCollection to a single composite. 2. Training Data: Manually digitizing geometries to serve as ground-truth “labels.” 3. Feature Selection: Choosing spectral bands (\\(B2, B3, B4, B8, B11, B12\\)) to serve as independent variables. 4. Model Training: Teaching the classifier to associate spectral “signatures” with land-cover labels. 5. Validation: Assessing the performance via a confusion matrix (not carried out).",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Week 6: Remote Sensing Classification I</span>"
+    ]
+  },
+  {
+    "objectID": "week6.html#application-classifying-the-urban-rural-fringe",
+    "href": "week6.html#application-classifying-the-urban-rural-fringe",
+    "title": "Week 6: Remote Sensing Classification I",
+    "section": "2. Application: Classifying the Urban-Rural Fringe",
+    "text": "2. Application: Classifying the Urban-Rural Fringe\nIn my practical application focused on the Cangzhou region, I encountered significant computational and spectral hurdles that defined my learning process.\n\nComputational Constraints and Pixel-Level Sampling\nInitially, I attempted to sample every pixel within my digitized polygons at a 10m scale. This resulted in over 237,000 training points, triggering GEE’s “Memory Capacity Exceeded” error. As exercise notes, the GEE browser interface has a limit on the number of elements it can accumulate for display.\nTo resolve this, I implemented a stratified random sampling approach. Instead of using entire polygons, I generated 1,000 random points per class (\\(n=7,000\\) total). This ensured class balance—preventing the “Urban” class from overwhelming smaller classes like “Water” in the model’s logic.\n\n\n\nInitial classification error showing ‘checkered’ tile failures due to memory limits.\n\n\n\n\nAddressing Spectral Confusion\nA major challenge was the “Blue Square” phenomenon: a large industrial rooftop in the city center was being consistently misclassified as Water.\n\nThe Cause: Bright concrete and metal can have spectral signatures surprisingly similar to turbid water in visible bands (\\(B2, B3, B4\\)).\nThe Solution: I integrated Short-Wave Infrared (SWIR) bands (\\(B11\\) and \\(B12\\)). Urban materials exhibit high reflectance in the SWIR range compared to the absorption seen in water bodies (jensen2005introductory?).\n\nFurthermore, I separated “Agriculture” into two distinct training classes: Green Crops and Bare/Fallow Fields. While they represent the same land use, their spectral signatures are polar opposites. Training them as separate entities and merging them only at the visualization stage prevented “spectral blurring” in the classifier.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Week 6: Remote Sensing Classification I</span>"
+    ]
+  },
+  {
+    "objectID": "week6.html#reflection-cart-vs.-random-forest",
+    "href": "week6.html#reflection-cart-vs.-random-forest",
+    "title": "Week 6: Remote Sensing Classification I",
+    "section": "3. Reflection: CART vs. Random Forest",
+    "text": "3. Reflection: CART vs. Random Forest\nThe most significant takeaway was the superiority of Random Forest over a single CART (Classification and Regression Tree).\n\n\n\nThe CART over-generalised classification\n\n\nA CART model is a single flowchart of decisions. If a bright building looks slightly like a field at the first “branch,” the entire pixel is misclassified. In contrast, Random Forest is an ensemble method (breiman2001random?). By building 100 different trees and letting them “vote” on the final class, the model becomes robust against the “noise” of individual pixels.\n\n\n\nFinal Random Forest result showing the corrected urban center and agriculture zones.\n\n\n\nKey Technical Lessons:\n\nTileScale: I learned that “Internal Errors” in GEE are often fixed by increasing the tileScale (from 4 to 16), which allows the server to partition complex computations more effectively.\nGeometry Simplification: Hand-drawn polygons with too many vertices can crash the randomPoints function. Using .simplify(1) is a mandatory step for stable code.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Week 6: Remote Sensing Classification I</span>"
+    ]
+  },
+  {
+    "objectID": "week6.html#supervised-classification-is-not-a-one-click-process-it-is-a-constant-dialogue-between-the-user-who-knows-the-geography-and-the-algorithm-which-knows-the-math.",
+    "href": "week6.html#supervised-classification-is-not-a-one-click-process-it-is-a-constant-dialogue-between-the-user-who-knows-the-geography-and-the-algorithm-which-knows-the-math.",
+    "title": "Week 6: Remote Sensing Classification I",
+    "section": "Supervised classification is not a “one-click” process; it is a constant dialogue between the user (who knows the geography) and the algorithm (which knows the math).",
+    "text": "Supervised classification is not a “one-click” process; it is a constant dialogue between the user (who knows the geography) and the algorithm (which knows the math).",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Week 6: Remote Sensing Classification I</span>"
     ]
   },
   {
