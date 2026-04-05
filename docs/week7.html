@@ -8,7 +8,7 @@
 
 <meta name="author" content="Fiaz Hussain">
 
-<title>Week 3: Corrections and Enhancements – Learning Diary</title>
+<title>Week 7: Classification II – Learning Diary</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -50,8 +50,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./week4.html" rel="next">
-<link href="./week2.html" rel="prev">
+<link href="./week8.html" rel="next">
+<link href="./week6.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -103,7 +103,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./week3.html"><span class="chapter-title">Week 3: Corrections and Enhancements</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./week7.html"><span class="chapter-title">Week 7: Classification II</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -145,7 +145,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./week3.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Week 3: Corrections and Enhancements</span></a>
+  <a href="./week3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Week 3: Corrections and Enhancements</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -165,7 +165,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./week7.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Week 7: Classification II</span></a>
+  <a href="./week7.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Week 7: Classification II</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -190,13 +190,6 @@ div.csl-indent {
    
   <ul>
   <li><a href="#summary" id="toc-summary" class="nav-link active" data-scroll-target="#summary">Summary</a></li>
-  <li><a href="#practical-outputs" id="toc-practical-outputs" class="nav-link" data-scroll-target="#practical-outputs">Practical Outputs</a>
-  <ul class="collapse">
-  <li><a href="#ndvi" id="toc-ndvi" class="nav-link" data-scroll-target="#ndvi">NDVI</a></li>
-  <li><a href="#dn-distribution" id="toc-dn-distribution" class="nav-link" data-scroll-target="#dn-distribution">DN Distribution</a></li>
-  <li><a href="#texture" id="toc-texture" class="nav-link" data-scroll-target="#texture">Texture</a></li>
-  <li><a href="#principal-component-analysis-pca" id="toc-principal-component-analysis-pca" class="nav-link" data-scroll-target="#principal-component-analysis-pca">Principal Component Analysis (PCA)</a></li>
-  </ul></li>
   <li><a href="#applications" id="toc-applications" class="nav-link" data-scroll-target="#applications">Applications</a></li>
   <li><a href="#reflection" id="toc-reflection" class="nav-link" data-scroll-target="#reflection">Reflection</a></li>
   </ul>
@@ -207,7 +200,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">Week 3: Corrections and Enhancements</span></h1>
+<h1 class="title"><span class="chapter-title">Week 7: Classification II</span></h1>
 </div>
 
 
@@ -230,84 +223,56 @@ div.csl-indent {
 </header>
 
 
-<section id="summary" class="level1">
-<h1>Summary</h1>
-<p>This week introduced corrections in remote sensing and why they matter before any quantitative analysis. Satellite imagery is affected by several sources of variation — sensor characteristics, atmospheric scattering and absorption, illumination differences caused by terrain, and geometric misalignment — and corrections aim to reduce these so that pixel values more accurately represent actual surface reflectance.</p>
-<p>Radiometric correction converts raw digital numbers (DN) into physical reflectance values. Atmospheric correction removes haze, scattering and absorption caused by gases and aerosols. The practical introduced Dark Object Subtraction (DOS) as an image-based method that assumes the darkest pixel in a scene should have near-zero reflectance, so any residual value can be attributed to atmospheric path radiance and subtracted from the rest of the image. In practice, DOS did not run successfully on the Level 2 data used here — Level 2 products from USGS are already atmospherically corrected surface reflectance, which is why DOS is not applicable. The correction was therefore skipped and the analysis proceeded directly with the Level 2 data.</p>
-<p>The practical also covered mosaicking two Landsat tiles (one Landsat 8, one Landsat 9) using <code>terra::mosaic()</code> with a mean function to merge overlapping areas, followed by clipping to a custom study area shapefile for Cape Town. Subsequent enhancements included a 3×3 focal mean filter on Band 4, GLCM texture analysis (homogeneity, 7×7 window) using the <code>GLCMTextures</code> package, data fusion combining the spectral bands with the texture layer, and PCA on the combined dataset.</p>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>This week extended the classification work from week 6 by introducing sub-pixel classification, object-based image analysis (OBIA) using superpixels, and accuracy assessment. The study area was Dar es Salaam, Tanzania, using Landsat 8 Collection 2 imagery in GEE.</p>
+<p>The key conceptual shift from week 6 is that pixel-based classification treats every 30m cell as belonging entirely to one land cover class. In reality most pixels contain a mix of surface types — a single Landsat pixel in Dar es Salaam might contain road, rooftop, tree canopy and soil simultaneously. Sub-pixel classification addresses this by estimating the fraction of each land cover type within every pixel rather than forcing a single class label <span class="citation" data-cites="foodySubPixelMethodsRemote2004">Foody (<a href="references.html#ref-foodySubPixelMethodsRemote2004" role="doc-biblioref">2004</a>)</span>.</p>
+<p>The practical covered three approaches. First, spectral unmixing — defining endmembers for urban, grass, bare earth and forest by drawing polygons on the map and extracting mean spectral values, then using GEE’s <code>unmix()</code> function to compute the fraction of each endmember per pixel. Second, OBIA using SNIC superpixels — grouping pixels into objects based on spectral similarity before classifying at the object level. Third, hardening — converting continuous fraction outputs into a discrete classification by assigning each pixel to whichever class exceeded a 0.5 threshold.</p>
 </section>
-<section id="practical-outputs" class="level1">
-<h1>Practical Outputs</h1>
-<section id="ndvi" class="level2">
-<h2 class="anchored" data-anchor-id="ndvi">NDVI</h2>
-<p>The NDVI image highlights vegetation patterns across the Cape Town study area. Higher values indicate denser or healthier vegetation, while lower values correspond to bare soil, built-up areas or water. The reclassified output retains only pixels with NDVI ≥ 0.2, isolating areas with meaningful vegetation cover.</p>
-<div class="cell">
+<section id="applications" class="level2">
+<h2 class="anchored" data-anchor-id="applications">Applications</h2>
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="figures/NDVI.png" class="img-fluid figure-img" width="236"></p>
+<p><img src="figures/constrained_fractions_classification2.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Figure 1: Constrained spectral fractions over Dar es Salaam. Red tones indicate high urban fraction concentrated in the city centre; green tones indicate vegetation dominant in peri-urban areas; blue pixels near the coast indicate water fraction.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Looking at the constrained fractions output (Figure 1), the urban signal — shown in red — is strongly concentrated in the central coastal area of Dar es Salaam which matches the known location of the CBD and densely built-up neighbourhoods. Green vegetation dominates the peri-urban areas to the west and south, which is consistent with the lower density residential and agricultural land that surrounds the city core. The blue pixels along the coast and harbour correctly identify water bodies even though no water class was explicitly defined — the unmixing algorithm detected the spectral dissimilarity from all four endmembers and expressed it as a residual, which in this case corresponds visually to the Indian Ocean.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/classfied_classification2.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Figure 2: Hardened classification of Dar es Salaam applying a 0.5 fraction threshold. Pink areas show urban land cover; green shows forest/vegetation; cream areas are unclassified pixels where no single endmember exceeded 50%.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The hardened output (Figure 2) shows a limitation of the 0.5 threshold approach — a large proportion of the city appears as unclassified cream/white. This happens because Dar es Salaam has a large informal settlement zone where urban, vegetation and bare earth are deeply intermixed at scales below the 30m pixel. No single endmember dominates above 50% in these areas, so the pixel remains unassigned. This is precisely the problem <span class="citation" data-cites="foodySubPixelMethodsRemote2004">Foody (<a href="references.html#ref-foodySubPixelMethodsRemote2004" role="doc-biblioref">2004</a>)</span> identifies with sub-pixel analysis — the accuracy is difficult to assess and the output is sensitive to the quality and representativeness of the endmembers chosen.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/Unmixed_Classfication2.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Figure 3: Unmixed (unconstrained) fractions showing the full spectral decomposition before constraining values to sum to one.</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="dn-distribution" class="level2">
-<h2 class="anchored" data-anchor-id="dn-distribution">DN Distribution</h2>
-<p>The DN histograms show the frequency distribution of pixel values across spectral bands. These plots illustrate why radiometric correction is necessary when working with raw data — raw DN values vary by band and are influenced by illumination and sensor characteristics before any correction is applied.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="figures/DN_plot.png" class="img-fluid figure-img" width="236"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="texture" class="level2">
-<h2 class="anchored" data-anchor-id="texture">Texture</h2>
-<p>Texture analysis captures spatial variation in pixel values using the Grey Level Co-occurrence Matrix (GLCM), which characterises the statistical relationship between neighbouring pixels. The homogeneity measure used here reflects how similar adjacent pixel values are — higher values indicate more uniform surfaces. This is useful for differentiating surfaces that may have similar spectral reflectance but different spatial structure, such as urban areas versus scrubland.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="figures/texture.png" class="img-fluid figure-img" width="236"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="principal-component-analysis-pca" class="level2">
-<h2 class="anchored" data-anchor-id="principal-component-analysis-pca">Principal Component Analysis (PCA)</h2>
-<p>PCA reduces the dimensionality of the fused spectral and texture dataset by transforming correlated bands into uncorrelated components. The first component captures the majority of variance and tends to reflect dominant surface brightness patterns, while later components highlight more subtle spectral and textural differences that are not visible in individual bands.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="figures/PCA.png" class="img-fluid figure-img" width="320"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="applications" class="level1">
-<h1>Applications</h1>
-<p>Corrections are a prerequisite for many remote sensing workflows, not just a preprocessing formality. <span class="citation" data-cites="jensenIntroductoryDigitalImage2016">Jensen (<a href="references.html#ref-jensenIntroductoryDigitalImage2016" role="doc-biblioref">2016, p. 208</a>)</span> describes atmospheric correction as essential for any analysis that compares imagery across dates or sensors, since uncorrected images will reflect differences in atmospheric conditions rather than true changes in surface reflectance. This is especially relevant for multi-temporal NDVI analysis — a comparison of vegetation health between two dates will only be meaningful if both images are on the same radiometric scale. The Level 2 surface reflectance products used in this practical handle this automatically, which is one reason they are now the standard for most Landsat-based analysis.</p>
-<p>The question of when corrections are actually necessary is more nuanced than it first appears. For a single-date classification where the training data and the image to be classified are from the same scene, atmospheric correction adds little benefit. It becomes essential when data from different dates or different sensors are being combined — exactly the scenario addressed by data fusion. <span class="citation" data-cites="schultetobuhneBetterTogetherIntegrating2018a">Schulte To Bühne and Pettorelli (<a href="references.html#ref-schultetobuhneBetterTogetherIntegrating2018a" role="doc-biblioref">2018</a>)</span> showed that fusing multispectral optical data with radar (SAR) imagery improved biodiversity monitoring outcomes compared to either sensor used alone, but noted that this kind of fusion requires the optical data to be atmospherically corrected to ensure the spectral values are physically meaningful before combination. The same principle applies to the spectral-texture fusion performed in this practical: the scale correction applied before the GLCM analysis (<code>scale &lt;- (m1_clip * 0.0000275) + -0.2</code>) converts the integer DN values back to surface reflectance, which is a necessary step before any meaningful texture comparison can be made across different areas or dates.</p>
-</section>
-<section id="reflection" class="level1">
-<h1>Reflection</h1>
-<p>The DOS failure this week was actually clarifying rather than frustrating. Trying to run DOS on a Level 2 product and having it fail made the distinction between Level 1 (digital numbers) and Level 2 (surface reflectance) much more concrete than the lecture description alone. It also raised a question I had not thought about before: if Level 2 products are already corrected, at what point does it make sense to go back and work with raw Level 1 data and apply DOS manually? The answer is probably rarely for standard analysis, but the exercise of understanding what DOS is doing — subtracting the darkest pixel value on the assumption it represents path radiance — helps interpret what the Level 2 correction has already done.</p>
-<p>The PCA output was harder to interpret than expected. The first component clearly captured overall brightness, but the later components showed spatial patterns that were difficult to connect back to specific land cover types without more domain knowledge of the area. This feels like a method where the technique is straightforward to apply but much harder to interpret meaningfully — which is a recurring theme in this module so far.</p>
+<section id="reflection" class="level2">
+<h2 class="anchored" data-anchor-id="reflection">Reflection</h2>
+<p>The most useful thing this week was seeing the difference between the constrained and unconstrained unmixing outputs side by side. The unconstrained version (Figure 3) has more vivid colour variation because fraction values are not forced to sum to one — pixels can have values above 1 or below 0 which does not make physical sense but shows where the endmembers are a poor fit for the actual surface. Where the constrained and unconstrained outputs differ most strongly is likely where the training polygons were least representative.</p>
+<p>The OBIA approach using SNIC superpixels felt more intuitive for an urban environment — grouping spectrally similar pixels into objects before classifying them is closer to how a human would interpret the image. The challenge is that it introduces more parameters to tune, and getting the compactness and neighbourhood size right for a heterogeneous city like Dar es Salaam requires iteration that the practical did not cover in depth.</p>
 
 
 <div id="refs" class="references csl-bib-body" role="list" style="display: none">
-<div id="ref-jensenIntroductoryDigitalImage2016" class="csl-entry" role="listitem">
-Jensen, J.R. (2016) <em>Introductory digital image processing: A remote sensing perspective</em>. Fourth edition. Glenview, Ill: Pearson Education (Pearson series in geographic information science).
-</div>
-<div id="ref-schultetobuhneBetterTogetherIntegrating2018a" class="csl-entry" role="listitem">
-Schulte To Bühne, H. and Pettorelli, N. (2018) <span>“Better together: Integrating and fusing multispectral and radar satellite imagery to inform biodiversity monitoring, ecological research and conservation science,”</span> <em>Methods in Ecology and Evolution</em>. Edited by N. Lecomte, 9(4), pp. 849–865. Available at: <a href="https://doi.org/10.1111/2041-210X.12942">https://doi.org/10.1111/2041-210X.12942</a>.
+<div id="ref-foodySubPixelMethodsRemote2004" class="csl-entry" role="listitem">
+Foody, G.M. (2004) <span>“Sub-pixel methods in remote sensing,”</span> in S.M.D. Jong and F.D.V.D. Meer (eds.) <em>Remote sensing image analysis: Including the spatial domain</em>. Dordrecht: Springer Netherlands, pp. 37–49. Available at: <a href="https://doi.org/10.1007/978-1-4020-2560-0_3">https://doi.org/10.1007/978-1-4020-2560-0_3</a>.
 </div>
 </div>
 </section>
@@ -715,13 +680,13 @@ Schulte To Bühne, H. and Pettorelli, N. (2018) <span>“Better together: Integr
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./week2.html" class="pagination-link" aria-label="Week 2">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Week 2</span></span>
+      <a href="./week6.html" class="pagination-link" aria-label="Week 6: Classification I">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Week 6: Classification I</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./week4.html" class="pagination-link" aria-label="Week 4: Policy">
-        <span class="nav-page-text"><span class="chapter-title">Week 4: Policy</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./week8.html" class="pagination-link" aria-label="Week 8: Temperature">
+        <span class="nav-page-text"><span class="chapter-title">Week 8: Temperature</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
