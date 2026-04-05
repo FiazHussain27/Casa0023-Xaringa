@@ -122,21 +122,21 @@
   {
     "objectID": "week6.html",
     "href": "week6.html",
-    "title": "Week 6: Remote Sensing Classification I",
+    "title": "Week 6: Classification I",
     "section": "",
-    "text": "1. Summary\nThis week focused on the transition from pixel-level spectral analysis to Supervised Image Classification. The core objective was to transform raw reflectance values from Sentinel-2 into thematic land-cover maps. Following the CASA0023 curriculum (maclachlan2024?), we explored the mechanics of Decision Trees (CART) and Random Forest (RF) algorithms.",
+    "text": "Summary\nThis week focused on the transition from pixel-level spectral analysis to supervised image classification. The core objective was to transform raw reflectance values from Sentinel-2 into thematic land-cover maps. We explored the mechanics of Decision Trees (CART) and Random Forest (RF) algorithms in Google Earth Engine.\nThe classification workflow in GEE follows a pipeline:",
     "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Week 6: Remote Sensing Classification I</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Week 6: Classification I</span>"
     ]
   },
   {
     "objectID": "week6.html#summary",
     "href": "week6.html#summary",
-    "title": "Week 6: Remote Sensing Classification I",
+    "title": "Week 6: Classification I",
     "section": "",
-    "text": "The Classification Workflow\nThe process in Google Earth Engine (GEE) follows a linear but iterative pipeline: 1. Preprocessing: Cloud masking using the QA60 band and median-reducing an ImageCollection to a single composite. 2. Training Data: Manually digitizing geometries to serve as ground-truth “labels.” 3. Feature Selection: Choosing spectral bands (\\(B2, B3, B4, B8, B11, B12\\)) to serve as independent variables. 4. Model Training: Teaching the classifier to associate spectral “signatures” with land-cover labels. 5. Validation: Assessing the performance via a confusion matrix (not carried out).",
+    "text": "Preprocessing — cloud masking using the QA60 band and median-reducing an ImageCollection to a single composite\nTraining data — manually digitising geometries to serve as ground-truth labels\nFeature selection — choosing spectral bands (B2, B3, B4, B8, B11, B12) as independent variables\nModel training — teaching the classifier to associate spectral signatures with land-cover labels\nValidation — assessing performance via a confusion matrix",
     "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Week 6: Remote Sensing Classification I</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Week 6: Classification I</span>"
     ]
   },
   {
@@ -177,6 +177,26 @@
     "text": "References\n\n\nAmani, M. et al. (2020) “Google earth engine cloud\ncomputing platform for remote sensing big data applications: A\ncomprehensive review,” IEEE Journal of Selected\nTopics in Applied Earth Observations and Remote Sensing, 13, pp.\n5326–5350. Available at: https://doi.org/10.1109/JSTARS.2020.3021052.\n\n\nCrist, E.P. (1985) “A TM tasseled cap equivalent\ntransformation for reflectance factor data,” Remote Sensing\nof Environment, 17(3), pp. 301–306. Available at: https://doi.org/10.1016/0034-4257(85)90102-6.\n\n\nGerasopoulos, E. et al. (2022) “Earth observation: An\nintegral part of a smart and sustainable city,” Environmental\nScience & Policy, 132, pp. 296–307. Available at: https://doi.org/10.1016/j.envsci.2022.02.033.\n\n\nGorelick, N. et al. (2017) “Google earth engine:\nPlanetary-scale geospatial analysis for everyone,” Remote\nSensing of Environment, 202, pp. 18–27. Available at: https://doi.org/10.1016/j.rse.2017.06.031.\n\n\nHerold, M., Couclelis, H. and Clarke, K.C. (2005) “The role of\nspatial metrics in the analysis and modeling of urban land use\nchange,” Computers, Environment and Urban Systems,\n29(4), pp. 369–399. Available at: https://doi.org/10.1016/j.compenvurbsys.2003.12.001.\n\n\nJensen, J.R. (2016) Introductory digital image processing: A remote\nsensing perspective. Fourth edition. Glenview, Ill: Pearson\nEducation (Pearson series in geographic information science).\n\n\nLi, D. et al. (2022) “Modeling the relationships between\nhistorical redlining, urban heat, and heat-related emergency department\nvisits: An examination of 11 texas cities,” Environment and\nPlanning B: Urban Analytics and City Science, 49(3), pp. 933–952.\nAvailable at: https://doi.org/10.1177/23998083211039854.\n\n\nMartinez, A.D.L.I. and Labib, S.M. (2023) “Demystifying normalized\ndifference vegetation index (NDVI) for greenness exposure\nassessments and policy interventions in urban greening,”\nEnvironmental Research, 220, p. 115155. Available at: https://doi.org/10.1016/j.envres.2022.115155.\n\n\nSchulte To Bühne, H. and Pettorelli, N. (2018) “Better together:\nIntegrating and fusing multispectral and radar satellite imagery to\ninform biodiversity monitoring, ecological research and conservation\nscience,” Methods in Ecology and Evolution. Edited by N.\nLecomte, 9(4), pp. 849–865. Available at: https://doi.org/10.1111/2041-210X.12942.\n\n\nWellmann, T. et al. (2020) “Remote sensing in urban\nplanning: Contributions towards ecologically sound policies?”\nLandscape and Urban Planning, 204, p. 103921. Available at: https://doi.org/10.1016/j.landurbplan.2020.103921.\n\n\nZha, Y., Gao, J. and Ni, S. (2003) “Use of normalized difference\nbuilt-up index in automatically mapping urban areas from TM\nimagery,” International Journal of Remote Sensing,\n24(3), pp. 583–594. Available at: https://doi.org/10.1080/01431160304987.",
     "crumbs": [
       "References"
+    ]
+  },
+  {
+    "objectID": "week6.html#applications",
+    "href": "week6.html#applications",
+    "title": "Week 6: Classification I",
+    "section": "Applications",
+    "text": "Applications\nIn the practical application focused on the Cangzhou region, two significant challenges defined the learning process.\nComputational constraints: Initially sampling every pixel within the digitised polygons at 10m scale produced over 237,000 training points, triggering GEE’s memory capacity error. The fix was stratified random sampling — generating 1,000 random points per class (7,000 total) to ensure class balance and prevent the urban class from overwhelming smaller classes like water.\n\n\n\n\n\nFigure 1: Checkered tile failures caused by memory limits when sampling at full resolution.\n\n\n\n\nSpectral confusion: A large industrial rooftop in the city centre was consistently misclassified as water. Bright concrete and metal can have spectral signatures similar to turbid water in visible bands (B2, B3, B4). The solution was to add Short-Wave Infrared bands (B11 and B12) — urban materials exhibit high reflectance in SWIR compared to the strong absorption seen in water bodies (Jensen, 2016). Additionally, agriculture was split into two training classes — green crops and bare/fallow fields — since their spectral signatures are opposite despite representing the same land use.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Week 6: Classification I</span>"
+    ]
+  },
+  {
+    "objectID": "week6.html#reflection",
+    "href": "week6.html#reflection",
+    "title": "Week 6: Classification I",
+    "section": "Reflection",
+    "text": "Reflection\nThe most significant takeaway was the difference between CART and Random Forest. A CART model is a single decision tree — if a bright building looks slightly like a field at the first branch, the entire pixel is misclassified. Random Forest is an ensemble method (Breiman, 2001) that builds multiple trees and lets them vote on the final class, making it robust against spectral noise from individual pixels.\n\n\n\n\n\nFigure 2: CART classification showing over-generalisation across the scene.\n\n\n\n\n\n\n\n\n\nFigure 3: Final Random Forest result showing corrected urban centre and agriculture zones.\n\n\n\n\nTwo technical lessons stood out. First, internal errors in GEE are often fixed by increasing tileScale (from 4 to 16), which allows the server to partition complex computations more effectively. Second, hand-drawn polygons with too many vertices can crash the randomPoints function — using .simplify(1) is a necessary step for stable code.\nSupervised classification is not a one-click process — it is a constant dialogue between the user who knows the geography and the algorithm that knows the mathematics.\n\n\n\n\nBreiman, L. (2001) “Random forests,” Machine Learning, 45(1), pp. 5–32. Available at: https://doi.org/10.1023/A:1010933404324.\n\n\nJensen, J.R. (2016) Introductory digital image processing: A remote sensing perspective. Fourth edition. Glenview, Ill: Pearson Education (Pearson series in geographic information science).",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Week 6: Classification I</span>"
     ]
   }
 ]
