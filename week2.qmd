@@ -1,17 +1,9 @@
+# Week 2
 
----
-title: "Week 2"
-author: "Fiaz Hussain"
-format: html
----
-
-
-Here is the presentation on LandSat sensor  and its historic evolution and its application in the real world. 
-
-```{r, echo=FALSE}
+Here is the presentation on LandSat sensor and its historic evolution and its application in the real world.
+```{r echo=FALSE}
 xaringanExtra::embed_xaringan(
-  url = "https://fiazhussain27.github.io/Casa0023-Xaringa/Week2_slides.html",
+  url = "https://fiazhussain27.github.io/Casa0023-Xaringa/week2_slides.html",
   ratio = "16:9"
 )
 ```
-
