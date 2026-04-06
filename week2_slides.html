@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Landsat: Earth’s Longest Observation Record</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="CASA0023" />
+    <meta name="date" content="2026-01-01" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Landsat: Earth’s Longest Observation Record
+]
+.subtitle[
+## CASA0023 Week 2 — Sensor Presentation
+]
+.author[
+### CASA0023
+]
+.institute[
+### UCL CASA
+]
+.date[
+### 2026
+]
+
+---
+
+
+
+
+---
+class: inverse, center, middle
+
+# Landsat
+### Earth's Longest Earth Observation Record
+
+CASA0023 · UCL CASA · 2026
+
+---
+# Summary — What is Landsat?
+
+Landsat is a joint **NASA/USGS** programme providing the longest continuous record of Earth's land surface from space — operating since **1972** (Wulder et al., 2022).
+
+.pull-left[
+
+- 9 satellites launched; **Landsat 8 and 9** currently operational
+- Combined **8-day revisit** at the equator
+- **30m** optical, **100m** thermal spatial resolution
+- Free and open data since **2008**; over **10 million scenes**
+- 11 bands including **two thermal infrared (TIRS)** bands — the only free sensor with this capability; Sentinel-2 has no thermal band
+
+]
+
+.pull-right[
+
+&lt;div class="figure"&gt;
+&lt;img src="https://eoimages.gsfc.nasa.gov/images/imagerecords/87000/87640/iran.false.color.lrg.jpg" alt="Landsat 8 false colour composite, Iran. Red = vegetation, grey-blue = urban. Source: NASA/USGS (public domain)" width="100%" /&gt;
+&lt;p class="caption"&gt;Landsat 8 false colour composite, Iran. Red = vegetation, grey-blue = urban. Source: NASA/USGS (public domain)&lt;/p&gt;
+&lt;/div&gt;
+
+]
+
+---
+# Summary — Resolution Trade-offs and Limitations
+
+| Resolution | Landsat 8/9 | Implication |
+|-----------|-------------|-------------|
+| Spatial | 30m optical / 100m thermal | Mixed pixels in dense urban areas |
+| Spectral | 11 bands incl. TIRS | Richer than Sentinel-2; unique thermal capability |
+| Temporal | 16 days / 8 days combined | Gaps for time-sensitive monitoring |
+| Radiometric | 12-bit (4096 levels) | Collection 2 Level-2 products are analysis-ready |
+
+**Key limitation:** Landsat is a **passive optical sensor** — cloud cover and darkness make imagery unusable during storm events, precisely when monitoring may be most needed. This is why Landsat is increasingly combined with active SAR sensors like Sentinel-1 that are cloud-independent.
+
+---
+# Application 1 — Urban Heat Islands
+
+MacLachlan et al. (2021) used Landsat 8 LST time series to map urban heat island (UHI) intensity across multiple cities, demonstrating that impervious surface expansion directly drives surface temperature increases.
+
+.pull-left[
+Landsat's **thermal infrared band** enables land surface temperature retrieval, while its **archive depth** allows detection of multi-decade warming trends no other free sensor can match.
+
+**Limitation:** Landsat captures daytime LST only (~10:00 local time), missing the nocturnal UHI which is often more intense. MODIS provides day and night acquisitions but at 1km — too coarse for intra-city analysis.
+]
+
+.pull-right[
+&lt;div class="figure"&gt;
+&lt;img src="https://eoimages.gsfc.nasa.gov/images/imagerecords/90000/90574/larsenC.A68.lrg.jpg" alt="Landsat 8 TIRS thermal image, Larsen C ice shelf calving, 2017. Orange = warmest. Source: NASA Earth Observatory (public domain)" width="100%" /&gt;
+&lt;p class="caption"&gt;Landsat 8 TIRS thermal image, Larsen C ice shelf calving, 2017. Orange = warmest. Source: NASA Earth Observatory (public domain)&lt;/p&gt;
+&lt;/div&gt;
+]
+
+.footnote[MacLachlan et al. (2021) DOI: 10.3389/frsc.2021.715890]
+
+---
+# Application 2 — Land Cover Change
+
+Wulder et al. (2022) highlight that Landsat's 50-year archive enables detection of land change across the full Anthropocene — urban expansion, deforestation, agricultural intensification — at 30m. Sentinel-2 only provides data from 2015, making it insufficient for long-term baselines.
+
+.pull-left[
+Hansen et al. used annual Landsat composites to produce the first globally consistent map of forest loss at 30m, detecting **2.3 million km²** of forest loss between 2000 and 2012.
+
+Schneider et al. quantified global urban expansion between 1990–2000, finding urban land increased by **58,000 km²** in a single decade — only possible with Landsat's temporal depth.
+]
+
+.pull-right[
+&lt;div class="figure"&gt;
+&lt;img src="https://eoimages.gsfc.nasa.gov/images/imagerecords/78000/78749/beijing.comparisons.crop.jpg" alt="Landsat false-colour composite showing Beijing urban expansion 1978–2011. Red = vegetation, tan = built-up. Source: NASA Earth Observatory (public domain)" width="100%" /&gt;
+&lt;p class="caption"&gt;Landsat false-colour composite showing Beijing urban expansion 1978–2011. Red = vegetation, tan = built-up. Source: NASA Earth Observatory (public domain)&lt;/p&gt;
+&lt;/div&gt;
+]
+
+.footnote[Wulder et al. (2022) DOI: 10.1016/j.rse.2022.113195]
+
+---
+# Application 3 — Surface Water Monitoring
+
+Pekel et al. (2016) used the entire Landsat archive (1984–2015) to map global surface water changes, finding **90,000 km²** of permanent water lost globally — equivalent to five Lake Eries. This study would have been impossible without Landsat's temporal depth; no other free sensor covers this period at 30m.
+
+The MNDWI index exploits Landsat's Green and SWIR bands to distinguish water from built-up surfaces:
+
+`$$MNDWI = \frac{Green - SWIR}{Green + SWIR}$$`
+
+MNDWI suppresses built-up noise better than NDWI, making it preferable in urban contexts. A limitation is that dark surfaces and dry soils can produce similar low SWIR responses to water, requiring careful validation — particularly in arid regions.
+
+.footnote[Pekel et al. (2016) DOI: 10.1038/nature20584]
+
+---
+# Reflection
+
+Before preparing this presentation I had not fully appreciated how significant Landsat's archive depth is compared to other free sensors. Sentinel-2 only goes back to 2015, which means many of the most interesting questions about long-term land change simply cannot be answered with it.
+
+The passive sensor limitation is something I understood conceptually from week 1 but feels more concrete now — cloud cover during the exact periods when land change is happening is a real problem, not just a theoretical one.
+
+Going forward, combining Landsat with SAR data seems like the logical direction, and **Landsat Next (~2030)** with improved resolution and more bands will address some of the current spatial limitations. The 50-year archive however is something no future mission can replicate retroactively.
+
+---
+# References
+
+Masek, J.G. et al. (2020). Landsat 9: Empowering open science and applications through continuity. *Remote Sensing of Environment*, 248, 111881. DOI: 10.1016/j.rse.2020.111881
+
+MacLachlan, A., Biggs, E., Roberts, G. and Boruff, B. (2021). Sustainable City Planning: A Data-Driven Approach for Mitigating Urban Heat. *Frontiers in Built Environment*, 6. DOI: 10.3389/frsc.2021.715890
+
+Pekel, J.F., Cottam, A., Gorelick, N. and Belward, A.S. (2016). High-resolution global map of surface water and its long-term changes. *Nature*, 540, pp. 418–422. DOI: 10.1038/nature20584
+
+Wulder, M.A. et al. (2022). Fifty years of Landsat science and impacts. *Remote Sensing of Environment*, 280, 113195. DOI: 10.1016/j.rse.2022.113195
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false,
+  "ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
