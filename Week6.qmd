@@ -42,4 +42,7 @@ knitr::include_graphics("figures/Cllasfied1_full_scene.jpg")
 
 Two technical lessons stood out. First, internal errors in GEE are often fixed by increasing `tileScale` (from 4 to 16), which allows the server to partition complex computations more effectively. Second, hand-drawn polygons with too many vertices can crash the `randomPoints` function — using `.simplify(1)` is a necessary step for stable code.
 
-Supervised classification is not a one-click process — it is a constant dialogue between the user who knows the geography and the algorithm that knows the mathematics.
+Supervised classification is not a one-click process — it is a constant dialogue between the user who knows the geography and the algorithm that knows the mathematics.(Google, n.d.)
+
+## Reference
+Google (n.d.) Supervised Classification. Available at: google.com (Accessed: [20-Mar-2026])
