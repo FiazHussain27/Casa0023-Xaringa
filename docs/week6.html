@@ -192,7 +192,7 @@ div.csl-indent {
   <li><a href="#summary" id="toc-summary" class="nav-link active" data-scroll-target="#summary">Summary</a></li>
   <li><a href="#applications" id="toc-applications" class="nav-link" data-scroll-target="#applications">Applications</a></li>
   <li><a href="#reflection" id="toc-reflection" class="nav-link" data-scroll-target="#reflection">Reflection</a></li>
-  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference">Reference</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
     </div>
@@ -233,7 +233,8 @@ div.csl-indent {
 <li><strong>Training data</strong> — manually digitising geometries to serve as ground-truth labels</li>
 <li><strong>Feature selection</strong> — choosing spectral bands (B2, B3, B4, B8, B11, B12) as independent variables</li>
 <li><strong>Model training</strong> — teaching the classifier to associate spectral signatures with land-cover labels</li>
-<li><strong>Validation</strong> — assessing performance via a confusion matrix</li>
+<li><strong>Train/test split</strong> — splitting points 70/30 at pixel level to retain independent validation data</li>
+<li><strong>Validation</strong> — assessing performance via a confusion matrix on unseen data</li>
 </ul>
 </section>
 <section id="applications" class="level2">
@@ -265,22 +266,34 @@ div.csl-indent {
 </div>
 </div>
 </div>
+<p>The final Random Forest classification used a 70/30 pixel-level train/test split — 4,857 points for training and 2,143 for validation — with 4,137 points ultimately used after removing those falling outside the Cangzhou boundary. The training overall accuracy was <strong>99.7%</strong>, while the validation overall accuracy was <strong>85.2%</strong>. The gap between these two figures indicates some overfitting — the model learned the training data very well but generalised less perfectly to unseen pixels. This is a known limitation of Random Forest when training polygons are small or spectrally similar classes are adjacent <span class="citation" data-cites="breimanRandomForests2001">(<a href="references.html#ref-breimanRandomForests2001" role="doc-biblioref">Breiman, 2001</a>)</span>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="figures/Cllasfied1_full_scene.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption>Figure 3: Final Random Forest result showing corrected urban centre and agriculture zones.</figcaption>
+<p><img src="figures/Training_errors.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Figure 3: Training and validation error matrices with consumer accuracy per class.</figcaption>
 </figure>
 </div>
 </div>
 </div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/Final_Land_Cover_Map.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Figure 4: Final Random Forest land cover classification of Cangzhou, 2022.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Looking at the consumer accuracy per class, water achieved 1.0 (100%), grass 0.93, bare earth 0.97 and agriculture 0.97 — suggesting the model performs well for spectrally distinct classes. Urban low (0.60) showed the weakest performance, likely because low-density urban areas in Cangzhou share spectral characteristics with bare earth, particularly in an agricultural region where small settlements are interspersed with fields.</p>
 <p>Two technical lessons stood out. First, internal errors in GEE are often fixed by increasing <code>tileScale</code> (from 4 to 16), which allows the server to partition complex computations more effectively. Second, hand-drawn polygons with too many vertices can crash the <code>randomPoints</code> function — using <code>.simplify(1)</code> is a necessary step for stable code.</p>
 <p>Supervised classification is not a one-click process — it is a constant dialogue between the user who knows the geography and the algorithm that knows the mathematics.(Google, n.d.)</p>
 </section>
-<section id="reference" class="level2">
-<h2 class="anchored" data-anchor-id="reference">Reference</h2>
-<p>Google (n.d.) Supervised Classification. Available at: google.com (Accessed: [20-Mar-2026])</p>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>Google (n.d.) Supervised Classification. Available at: google.com (Accessed: [17/03/2026]).</p>
 
 
 <div id="refs" class="references csl-bib-body" role="list" style="display: none">

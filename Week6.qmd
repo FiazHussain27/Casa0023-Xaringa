@@ -14,7 +14,8 @@ The classification workflow in GEE follows a pipeline:
 - **Training data** — manually digitising geometries to serve as ground-truth labels
 - **Feature selection** — choosing spectral bands (B2, B3, B4, B8, B11, B12) as independent variables
 - **Model training** — teaching the classifier to associate spectral signatures with land-cover labels
-- **Validation** — assessing performance via a confusion matrix
+- **Train/test split** — splitting points 70/30 at pixel level to retain independent validation data
+- **Validation** — assessing performance via a confusion matrix on unseen data
 
 ## Applications
 
@@ -36,13 +37,21 @@ The most significant takeaway was the difference between CART and Random Forest.
 knitr::include_graphics("figures/Classification1_over_genreralised.jpg")
 ```
 
-```{r fig3, echo=FALSE, fig.cap="Figure 3: Final Random Forest result showing corrected urban centre and agriculture zones.", out.width="80%", fig.align="center"}
-knitr::include_graphics("figures/Cllasfied1_full_scene.jpg")
+The final Random Forest classification used a 70/30 pixel-level train/test split — 4,857 points for training and 2,143 for validation — with 4,137 points ultimately used after removing those falling outside the Cangzhou boundary. The training overall accuracy was **99.7%**, while the validation overall accuracy was **85.2%**. The gap between these two figures indicates some overfitting — the model learned the training data very well but generalised less perfectly to unseen pixels. This is a known limitation of Random Forest when training polygons are small or spectrally similar classes are adjacent [@breimanRandomForests2001].
+
+```{r fig3, echo=FALSE, fig.cap="Figure 3: Training and validation error matrices with consumer accuracy per class.", out.width="80%", fig.align="center"}
+knitr::include_graphics("figures/Training_errors.jpg")
 ```
+
+```{r fig4, echo=FALSE, fig.cap="Figure 4: Final Random Forest land cover classification of Cangzhou, 2022.", out.width="80%", fig.align="center"}
+knitr::include_graphics("figures/Final_Land_Cover_Map.jpg")
+```
+
+Looking at the consumer accuracy per class, water achieved 1.0 (100%), grass 0.93, bare earth 0.97 and agriculture 0.97 — suggesting the model performs well for spectrally distinct classes. Urban low (0.60) showed the weakest performance, likely because low-density urban areas in Cangzhou share spectral characteristics with bare earth, particularly in an agricultural region where small settlements are interspersed with fields.
 
 Two technical lessons stood out. First, internal errors in GEE are often fixed by increasing `tileScale` (from 4 to 16), which allows the server to partition complex computations more effectively. Second, hand-drawn polygons with too many vertices can crash the `randomPoints` function — using `.simplify(1)` is a necessary step for stable code.
 
 Supervised classification is not a one-click process — it is a constant dialogue between the user who knows the geography and the algorithm that knows the mathematics.(Google, n.d.)
 
-## Reference
-Google (n.d.) Supervised Classification. Available at: google.com (Accessed: [20-Mar-2026])
+## References
+Google (n.d.) Supervised Classification. Available at: google.com (Accessed: [17/03/2026]).

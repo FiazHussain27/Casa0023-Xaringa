@@ -134,7 +134,7 @@
     "href": "week6.html#summary",
     "title": "Week 6: Classification I",
     "section": "",
-    "text": "Preprocessing — cloud masking using the QA60 band and median-reducing an ImageCollection to a single composite\nTraining data — manually digitising geometries to serve as ground-truth labels\nFeature selection — choosing spectral bands (B2, B3, B4, B8, B11, B12) as independent variables\nModel training — teaching the classifier to associate spectral signatures with land-cover labels\nValidation — assessing performance via a confusion matrix",
+    "text": "Preprocessing — cloud masking using the QA60 band and median-reducing an ImageCollection to a single composite\nTraining data — manually digitising geometries to serve as ground-truth labels\nFeature selection — choosing spectral bands (B2, B3, B4, B8, B11, B12) as independent variables\nModel training — teaching the classifier to associate spectral signatures with land-cover labels\nTrain/test split — splitting points 70/30 at pixel level to retain independent validation data\nValidation — assessing performance via a confusion matrix on unseen data",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Week 6: Classification I</span>"
     ]
@@ -154,7 +154,7 @@
     "href": "week6.html#reflection",
     "title": "Week 6: Classification I",
     "section": "Reflection",
-    "text": "Reflection\nThe most significant takeaway was the difference between CART and Random Forest. A CART model is a single decision tree — if a bright building looks slightly like a field at the first branch, the entire pixel is misclassified. Random Forest is an ensemble method (Breiman, 2001) that builds multiple trees and lets them vote on the final class, making it robust against spectral noise from individual pixels.\n\n\n\n\n\nFigure 2: CART classification showing over-generalisation across the scene.\n\n\n\n\n\n\n\n\n\nFigure 3: Final Random Forest result showing corrected urban centre and agriculture zones.\n\n\n\n\nTwo technical lessons stood out. First, internal errors in GEE are often fixed by increasing tileScale (from 4 to 16), which allows the server to partition complex computations more effectively. Second, hand-drawn polygons with too many vertices can crash the randomPoints function — using .simplify(1) is a necessary step for stable code.\nSupervised classification is not a one-click process — it is a constant dialogue between the user who knows the geography and the algorithm that knows the mathematics.(Google, n.d.)",
+    "text": "Reflection\nThe most significant takeaway was the difference between CART and Random Forest. A CART model is a single decision tree — if a bright building looks slightly like a field at the first branch, the entire pixel is misclassified. Random Forest is an ensemble method (Breiman, 2001) that builds multiple trees and lets them vote on the final class, making it robust against spectral noise from individual pixels.\n\n\n\n\n\nFigure 2: CART classification showing over-generalisation across the scene.\n\n\n\n\nThe final Random Forest classification used a 70/30 pixel-level train/test split — 4,857 points for training and 2,143 for validation — with 4,137 points ultimately used after removing those falling outside the Cangzhou boundary. The training overall accuracy was 99.7%, while the validation overall accuracy was 85.2%. The gap between these two figures indicates some overfitting — the model learned the training data very well but generalised less perfectly to unseen pixels. This is a known limitation of Random Forest when training polygons are small or spectrally similar classes are adjacent (Breiman, 2001).\n\n\n\n\n\nFigure 3: Training and validation error matrices with consumer accuracy per class.\n\n\n\n\n\n\n\n\n\nFigure 4: Final Random Forest land cover classification of Cangzhou, 2022.\n\n\n\n\nLooking at the consumer accuracy per class, water achieved 1.0 (100%), grass 0.93, bare earth 0.97 and agriculture 0.97 — suggesting the model performs well for spectrally distinct classes. Urban low (0.60) showed the weakest performance, likely because low-density urban areas in Cangzhou share spectral characteristics with bare earth, particularly in an agricultural region where small settlements are interspersed with fields.\nTwo technical lessons stood out. First, internal errors in GEE are often fixed by increasing tileScale (from 4 to 16), which allows the server to partition complex computations more effectively. Second, hand-drawn polygons with too many vertices can crash the randomPoints function — using .simplify(1) is a necessary step for stable code.\nSupervised classification is not a one-click process — it is a constant dialogue between the user who knows the geography and the algorithm that knows the mathematics.(Google, n.d.)",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Week 6: Classification I</span>"
     ]
@@ -245,6 +245,16 @@
     "title": "Week 6: Classification I",
     "section": "Reference",
     "text": "Reference\nGoogle (n.d.) Supervised Classification. Available at: google.com (Accessed: [20-Mar-2026])\n\n\n\n\nBreiman, L. (2001) “Random forests,” Machine Learning, 45(1), pp. 5–32. Available at: https://doi.org/10.1023/A:1010933404324.\n\n\nJensen, J.R. (2016) Introductory digital image processing: A remote sensing perspective. Fourth edition. Glenview, Ill: Pearson Education (Pearson series in geographic information science).",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Week 6: Classification I</span>"
+    ]
+  },
+  {
+    "objectID": "week6.html#references",
+    "href": "week6.html#references",
+    "title": "Week 6: Classification I",
+    "section": "References",
+    "text": "References\nGoogle (n.d.) Supervised Classification. Available at: google.com (Accessed: [17/03/2026]).\n\n\n\n\nBreiman, L. (2001) “Random forests,” Machine Learning, 45(1), pp. 5–32. Available at: https://doi.org/10.1023/A:1010933404324.\n\n\nJensen, J.R. (2016) Introductory digital image processing: A remote sensing perspective. Fourth edition. Glenview, Ill: Pearson Education (Pearson series in geographic information science).",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Week 6: Classification I</span>"
     ]
