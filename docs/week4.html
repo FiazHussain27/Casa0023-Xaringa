@@ -226,7 +226,7 @@ div.csl-indent {
 <section id="summary" class="level1">
 <h1>Summary</h1>
 <p>This week focused on how remotely sensed data can support and monitor urban policy goals. The case study selected is the <strong>London Plan (2021)</strong>, the statutory spatial development strategy for Greater London produced by the Mayor of London. The London Plan is a legally binding document that all London boroughs must follow when making planning decisions. It covers housing, transport, economic development, and the environment.</p>
-<p>The policy challenge selected here is <strong>urban heat</strong> — specifically how the London Plan addresses the urban heat island (UHI) effect and what role EO data could play in supporting those policies. London experienced a record 40.2°C heatwave in July 2022, and heat-related mortality in the city is already significant. The London Plan responds to this through several policies:</p>
+<p>The policy challenge selected here is <strong>urban heat</strong> — specifically how the London Plan addresses the urban heat island (UHI) effect and what role EO data could play in supporting those policies. London experienced a record 40.2°C heatwave in July 2022, and the UKHSA attributed 2,985 excess deaths to heat across England that summer. The urban heat island effect means central London can be up to 10°C warmer than surrounding rural areas on summer nights. The London Plan responds to this through several policies:</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -258,16 +258,17 @@ div.csl-indent {
 </tr>
 <tr class="even">
 <td><strong>Policy SI4</strong> — Managing Heat Risk</td>
-<td>Apply cooling hierarchy in new developments</td>
-<td>Identify hotspots using Landsat LST; prioritise interventions</td>
+<td>Requires development to reduce the impact of the urban heat island</td>
+<td>Identify hotspots using Landsat LST per output area; prioritise interventions</td>
 </tr>
 </tbody>
 </table>
-<p>The London Plan explicitly states that green infrastructure should help to address the urban heat island effect (Policy G1), and Policy SI4 requires new developments to demonstrate they have considered and mitigated heat risk through design, orientation, materials and green infrastructure. The Plan however does not specify how these targets should be monitored at the city scale — which is where EO data has a clear role.</p>
+<p>Policy SI4 is particularly important — it requires new developments to demonstrate they have considered and mitigated heat risk through design, orientation, materials and green infrastructure. However, the existing GLA heat vulnerability maps used to support SI4 are static and model-based, meaning they cannot reflect actual observed temperatures or changes over time. This is precisely where EO data has a clear and direct role.</p>
 <p><strong>Links to global goals:</strong></p>
 <ul>
-<li><strong>SDG 11.7</strong> — provide universal access to safe, inclusive and accessible green and public spaces</li>
-<li><strong>SDG 13</strong> — take urgent action to combat climate change and its impacts</li>
+<li><strong>SDG 11.5</strong> — Reduce deaths and economic losses from climate-related disasters</li>
+<li><strong>SDG 11.b</strong> — Implement integrated resilience policies at the city scale</li>
+<li><strong>SDG 13.1</strong> — Strengthen adaptive capacity to climate hazards</li>
 <li><strong>New Urban Agenda</strong> — foster nature-based solutions and ecosystem services</li>
 <li><strong>Sendai Framework</strong> — reduce exposure to climate-related hazards including extreme heat</li>
 </ul>
@@ -277,35 +278,29 @@ div.csl-indent {
 <p>The most direct application of EO data to the London Plan’s heat-related policies is the combination of <strong>Landsat land surface temperature (LST)</strong> and <strong>Sentinel-2 NDVI</strong> to identify where the UHI effect is most severe and where green infrastructure interventions are most needed.</p>
 <p>A practical workflow would be:</p>
 <ol type="1">
-<li><strong>Map LST</strong> across London using Landsat 8/9 thermal band (Band 10), identifying the hottest urban areas — typically dense inner-city neighbourhoods with high impervious surface cover and low vegetation</li>
-<li><strong>Map NDVI</strong> from Sentinel-2 at 10m to assess green cover at borough and ward level</li>
-<li><strong>Overlay with deprivation data</strong> — <span class="citation" data-cites="liModelingRelationshipsHistorical2022">Li <em>et al.</em> (<a href="references.html#ref-liModelingRelationshipsHistorical2022" role="doc-biblioref">2022</a>)</span> showed in a study of 11 Texas cities that historically disadvantaged areas consistently experience higher heat exposure, and a similar spatial pattern is likely in London where deprived inner-city boroughs tend to have less green space</li>
-<li><strong>Identify priority intervention areas</strong> — wards with high LST, low NDVI, and high deprivation represent the clearest case for targeted greening investment under Policy G5 and SI4</li>
-<li><strong>Monitor over time</strong> — repeat annually to track whether green infrastructure investment is producing measurable cooling effects</li>
+<li><strong>Map LST</strong> across London using Landsat 8/9 thermal band (Band 10), filtering for summer months with low cloud cover, applying scale factors and converting to Celsius. Reduce to a mean summer LST per output area using <code>reduceRegions</code> in GEE</li>
+<li><strong>Percentile rank output areas</strong> and assign a heat risk score of 1 to 5 — making the results directly interpretable for planners and policymakers <span class="citation" data-cites="wilsonUrbanHeatManagement2020">(<a href="references.html#ref-wilsonUrbanHeatManagement2020" role="doc-biblioref">Wilson, 2020</a>)</span></li>
+<li><strong>Map NDVI</strong> from Sentinel-2 at 10m to assess green cover at ward and output area level</li>
+<li><strong>Overlay with deprivation data</strong> to identify where heat exposure and social vulnerability coincide — <span class="citation" data-cites="liModelingRelationshipsHistorical2022">Li <em>et al.</em> (<a href="references.html#ref-liModelingRelationshipsHistorical2022" role="doc-biblioref">2022</a>)</span> showed that historically disadvantaged areas consistently experience higher heat exposure, and a similar pattern is likely in London where deprived inner-city areas tend to have less green space</li>
+<li><strong>Identify priority intervention areas</strong> — output areas with high LST, low NDVI, and high deprivation represent the strongest case for targeted greening investment under Policy G5 and SI4</li>
+<li><strong>Monitor over time</strong> — repeat annually to track whether green infrastructure investment is producing measurable cooling at the output area level</li>
 </ol>
-<p><span class="citation" data-cites="wellmannRemoteSensingUrban2020">Wellmann <em>et al.</em> (<a href="references.html#ref-wellmannRemoteSensingUrban2020" role="doc-biblioref">2020</a>)</span> reviewed remote sensing contributions to urban planning across European cities and found that while EO data has clear technical potential for supporting sustainability monitoring, its integration into actual planning practice is still limited. They argue that the barrier is not technical capability but the lack of standardised, policy-ready products that planners can use directly. For the London Plan, this means the analytical workflow above is technically feasible now — the data is freely available via GEE — but would need to be translated into borough-level reporting formats to be useful to planners.</p>
-<p><span class="citation" data-cites="martinezDemystifyingNormalizedDifference2023">Martinez and Labib (<a href="references.html#ref-martinezDemystifyingNormalizedDifference2023" role="doc-biblioref">2023</a>)</span> provide an important caution: NDVI is a measure of greenness, not of the ecosystem services greenness provides. They found NDVI-based assessments are often used in urban health and policy research without sufficient attention to what the index captures and what it misses — including canopy height, species diversity and accessibility. For the London Plan, NDVI can indicate where green cover exists across the city but cannot tell planners whether that cover is actually delivering the cooling, biodiversity and wellbeing outcomes the policy targets. This is a genuine limitation that needs to be acknowledged when proposing EO-based monitoring frameworks.</p>
-<p><span class="citation" data-cites="gerasopoulosEarthObservationIntegral2022">Gerasopoulos <em>et al.</em> (<a href="references.html#ref-gerasopoulosEarthObservationIntegral2022" role="doc-biblioref">2022</a>)</span> argue that EO should be treated as integral to smart city infrastructure — not as a supplementary data source. Their framework positions heat monitoring as one of the three most tractable EO applications for cities alongside air quality and green space monitoring, which aligns directly with the London Plan’s policy priorities.</p>
+<p>The key advantage of this satellite-derived approach over the current GLA heat maps is that it is observed not modelled — it reflects actual land surface temperatures from real imagery rather than statistical projections. It is also updatable at near-zero marginal cost using GEE, and operates at output area resolution rather than borough level, which is the scale at which planning decisions are actually made.</p>
+<p>One limitation worth noting is that NDVI measures greenness but not the ecosystem services that greenness delivers — canopy height, species diversity and accessibility all matter for cooling and wellbeing outcomes but are invisible to a simple spectral index. This means NDVI can indicate where green cover exists but cannot confirm whether that cover is actually meeting the policy outcomes that G1 and G5 are designed to achieve.</p>
 </section>
 <section id="reflection" class="level1">
 <h1>Reflection</h1>
 <p>The most interesting thing this week was seeing how much detail sits behind a single policy clause. Policy SI4 is just a few lines in the London Plan, but unpacking what it actually requires — and what EO data would be needed to monitor compliance — involves a chain of decisions about spatial resolution, temporal frequency, index choice, and how to connect satellite outputs to planning outcomes. That chain is harder than it looks.</p>
-<p>The gap between what remote sensing can technically do and what policy actually needs also became clearer. The London Plan sets targets in terms of UGF scores and percentage green cover, but satellite-derived NDVI is not a direct measure of either. Translating between the sensor output and the policy metric requires additional steps — and potentially additional validation — that are rarely discussed in the remote sensing literature but are critical for actual policy use.</p>
-<p>The connection between heat exposure and deprivation in <span class="citation" data-cites="liModelingRelationshipsHistorical2022">Li <em>et al.</em> (<a href="references.html#ref-liModelingRelationshipsHistorical2022" role="doc-biblioref">2022</a>)</span> was striking. It raises a question that the London Plan does not fully answer: even if green infrastructure targets are met city-wide, are they being met in the places that need them most? That is an equity question as much as a technical one, and it suggests that any EO-based monitoring framework for the London Plan should be reporting at a sub-borough level rather than aggregating across the whole city.</p>
+<p>What also struck me is that the current tools planners use are static and built at a point in time. Satellite data changes this fundamentally because it is continuously collected and freely available. A monitoring framework built on Landsat LST and Sentinel-2 NDVI in GEE could in principle update automatically every time new cloud-free imagery is acquired — which is a fundamentally different kind of evidence base for planning than a map that was last updated several years ago.</p>
+<p>The equity dimension was also striking. Even if green infrastructure targets are met city-wide, they may not be met in the places that need them most <span class="citation" data-cites="liModelingRelationshipsHistorical2022">(<a href="references.html#ref-liModelingRelationshipsHistorical2022" role="doc-biblioref">Li <em>et al.</em>, 2022</a>)</span>. That is an equity question as much as a technical one, and it suggests that any EO-based monitoring framework for the London Plan should report at output area level rather than aggregating across the whole city — because the borough average will always obscure the neighbourhoods that are most at risk.</p>
 
 
 <div id="refs" class="references csl-bib-body" role="list" style="display: none">
-<div id="ref-gerasopoulosEarthObservationIntegral2022" class="csl-entry" role="listitem">
-Gerasopoulos, E. <em>et al.</em> (2022) <span>“Earth observation: An integral part of a smart and sustainable city,”</span> <em>Environmental Science &amp; Policy</em>, 132, pp. 296–307. Available at: <a href="https://doi.org/10.1016/j.envsci.2022.02.033">https://doi.org/10.1016/j.envsci.2022.02.033</a>.
-</div>
 <div id="ref-liModelingRelationshipsHistorical2022" class="csl-entry" role="listitem">
 Li, D. <em>et al.</em> (2022) <span>“Modeling the relationships between historical redlining, urban heat, and heat-related emergency department visits: An examination of 11 texas cities,”</span> <em>Environment and Planning B: Urban Analytics and City Science</em>, 49(3), pp. 933–952. Available at: <a href="https://doi.org/10.1177/23998083211039854">https://doi.org/10.1177/23998083211039854</a>.
 </div>
-<div id="ref-martinezDemystifyingNormalizedDifference2023" class="csl-entry" role="listitem">
-Martinez, A.D.L.I. and Labib, S.M. (2023) <span>“Demystifying normalized difference vegetation index (<span>NDVI</span>) for greenness exposure assessments and policy interventions in urban greening,”</span> <em>Environmental Research</em>, 220, p. 115155. Available at: <a href="https://doi.org/10.1016/j.envres.2022.115155">https://doi.org/10.1016/j.envres.2022.115155</a>.
-</div>
-<div id="ref-wellmannRemoteSensingUrban2020" class="csl-entry" role="listitem">
-Wellmann, T. <em>et al.</em> (2020) <span>“Remote sensing in urban planning: Contributions towards ecologically sound policies?”</span> <em>Landscape and Urban Planning</em>, 204, p. 103921. Available at: <a href="https://doi.org/10.1016/j.landurbplan.2020.103921">https://doi.org/10.1016/j.landurbplan.2020.103921</a>.
+<div id="ref-wilsonUrbanHeatManagement2020" class="csl-entry" role="listitem">
+Wilson, B. (2020) <span>“Urban heat management and the legacy of redlining,”</span> <em>Journal of the American Planning Association</em>, 86(4), pp. 443–457. Available at: <a href="https://doi.org/10.1080/01944363.2020.1759127">https://doi.org/10.1080/01944363.2020.1759127</a>.
 </div>
 </div>
 </section>
