@@ -37,7 +37,7 @@ The most significant takeaway was the difference between CART and Random Forest.
 knitr::include_graphics("figures/Classification1_over_genreralised.jpg")
 ```
 
-The final Random Forest classification used a 70/30 pixel-level train/test split — 4,857 points for training and 2,143 for validation — with 4,137 points ultimately used after removing those falling outside the Cangzhou boundary. The training overall accuracy was **99.7%**, while the validation overall accuracy was **85.2%**. The gap between these two figures indicates some overfitting — the model learned the training data very well but generalised less perfectly to unseen pixels. This is a known limitation of Random Forest when training polygons are small or spectrally similar classes are adjacent [@breimanRandomForests2001].
+The final Random Forest classification used a 70/30 pixel-level train/test split — 4,857 points for training and 2,143 for validation — with 4,137 points ultimately used after removing those falling outside the Cangzhou boundary. The training overall accuracy was **99.7%**, while the validation overall accuracy was **85.2%**. The gap between these two figures indicates some overfitting — the model learned the training data very well but generalised less perfectly to unseen pixels. 
 
 ```{r fig3, echo=FALSE, fig.cap="Figure 3: Training and validation error matrices with consumer accuracy per class.", out.width="80%", fig.align="center"}
 knitr::include_graphics("figures/Training_errors.jpg")
