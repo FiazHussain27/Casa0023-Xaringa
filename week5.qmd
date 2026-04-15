@@ -30,7 +30,7 @@ knitr::include_graphics("figures/PC1.jpg")
 knitr::include_graphics("figures/GLCM.jpg")
 ```
 
-@amaniGoogleEarthEngine2020 review over 500 GEE applications and find that land use and land cover change, vegetation monitoring and urban analysis are the three most common application domains. For urban remote sensing specifically, GEE's temporal depth — the full Landsat archive back to 1984 — combined with cloud-based processing makes it practical to run analyses that would be computationally prohibitive locally. The ability to compute a cloud-free median composite over an entire year rather than relying on a single scene is a direct example of this.
+@amaniGoogleEarthEngine2020 review over 450 GEE applications and find that land use and land cover change, vegetation monitoring and urban analysis are the three most common application domains. For urban remote sensing specifically, GEE's temporal depth — the full Landsat archive back to 1984 — combined with cloud-based processing makes it practical to run analyses that would be computationally prohibitive locally. The ability to compute a cloud-free median composite over an entire year rather than relying on a single scene is a direct example of this.
 
 ```{r fig4, echo=FALSE, fig.cap="Figure 4: PCA bands 1 and 2 combined over Delhi. The purple and red tones represent different combinations of the two dominant components of spectral variance. Source: USGS Landsat via GEE.", out.width="80%", fig.align="center"}
 knitr::include_graphics("figures/PCA_bands_1_and_2.jpg")
