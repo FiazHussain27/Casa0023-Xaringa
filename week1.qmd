@@ -29,7 +29,7 @@ knitr::include_graphics(c(
 ))
 ```
 
-A key limitation of Landsat is its 30m spatial resolution — sufficient for regional analysis but coarse for dense urban environments where a single pixel commonly mixes road, rooftop, vegetation and shadow. Sentinel-2 partially addresses this with 10m visible and NIR bands, but lacks a thermal infrared band entirely, making Landsat the only free option for land surface temperature retrieval. A broader limitation shared by both is their passive nature — cloud cover and darkness render optical imagery unusable precisely when monitoring is most needed. Active SAR sensors overcome this constraint, suggesting that future analytical workflows will increasingly combine optical and SAR data rather than relying on either in isolation.
+A key limitation of Landsat is its 30m spatial resolution — sufficient for regional analysis but coarse for dense urban environments where a single pixel commonly mixes road, rooftop, vegetation and shadow. Sentinel-2 partially addresses this with 10m visible and NIR bands, but lacks a thermal infrared band entirely, making Landsat is the only free source providing the spatial detail necessary for street-level urban heat analysis. A broader limitation shared by both is their passive nature — cloud cover and darkness render optical imagery unusable precisely when monitoring is most needed. Active SAR sensors overcome this constraint, suggesting that future analytical workflows will increasingly combine optical and SAR data rather than relying on either in isolation.
 
 ## Applications
 
