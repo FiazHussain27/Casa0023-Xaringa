@@ -3,6 +3,7 @@ title: "Week 8: Temperature"
 author: "Fiaz Hussain"
 format: html
 ---
+
 # Week 8: Temperature
 
 ## Summary
@@ -17,9 +18,11 @@ The `reduceRegions` function was used to calculate mean Landsat temperature per 
 
 Finally, the practical replicated the heat index used by the BBC and 4 Earth Intelligence [@wilsonUrbanHeatManagement2020], which ranked areas by their heat hazard score using percentile categories. Districts were assigned to five levels based on where their mean temperature fell in the overall distribution — Level 1 being the coolest 40% and Level 5 the hottest 1%. This was implemented both in R using `case_when()` and in GEE using nested conditional logic. The resulting map (Figure 2) showed that most southern Beijing districts fell into Level 5 — the most heat-exposed category.
 
-```{r echo=FALSE, out.width='49%', fig.show='hold', fig.cap='Left: Mean Landsat surface temperature per district, Beijing 2022. Right: Heat index categories based on percentile rank of mean temperature'}
-knitr::include_graphics(c("figures/Rplot.jpeg", "figures/Percentile.jpeg"))
-```
+::: {layout-ncol=2}
+![Left: Mean Landsat surface temperature per district, Beijing 2022.](figures/Rplot.jpeg)
+
+![Right: Heat index categories based on percentile rank of mean temperature.](figures/Percentile.jpeg)
+:::
 
 ## Application
 

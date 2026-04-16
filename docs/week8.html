@@ -235,21 +235,23 @@ div.csl-indent {
 <p>MODIS data from both the Terra and Aqua satellites was also processed. Unlike Landsat, which produced only 5 usable images for the period due to its 16-day revisit cycle, MODIS provided over 100 images — making it far better suited to time series analysis, even if its 1km spatial resolution is coarser. After merging the two MODIS collections and reducing to a mean, the time series was plotted — first for Beijing overall, then broken down by district using <code>ui.Chart.image.seriesByRegion</code>.</p>
 <p>The <code>reduceRegions</code> function was used to calculate mean Landsat temperature per level 2 district, which was exported as a shapefile and mapped in R using <code>tmap</code>. The map (Figure 1) clearly showed higher mean temperatures (33.5–34.0°C) in southern and central districts compared to northern ones (32.0–32.4°C).</p>
 <p>Finally, the practical replicated the heat index used by the BBC and 4 Earth Intelligence <span class="citation" data-cites="wilsonUrbanHeatManagement2020">(<a href="references.html#ref-wilsonUrbanHeatManagement2020" role="doc-biblioref">Wilson, 2020</a>)</span>, which ranked areas by their heat hazard score using percentile categories. Districts were assigned to five levels based on where their mean temperature fell in the overall distribution — Level 1 being the coolest 40% and Level 5 the hottest 1%. This was implemented both in R using <code>case_when()</code> and in GEE using nested conditional logic. The resulting map (Figure 2) showed that most southern Beijing districts fell into Level 5 — the most heat-exposed category.</p>
-<div class="cell">
-<div class="cell-output-display">
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="figures/Rplot.jpeg" class="img-fluid figure-img" style="width:49.0%"></p>
-<figcaption>Left: Mean Landsat surface temperature per district, Beijing 2022. Right: Heat index categories based on percentile rank of mean temperature</figcaption>
+<p><img src="figures/Rplot.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Left: Mean Landsat surface temperature per district, Beijing 2022.</figcaption>
 </figure>
 </div>
 </div>
-<div class="cell-output-display">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="figures/Percentile.jpeg" class="img-fluid figure-img" style="width:49.0%"></p>
-<figcaption>Left: Mean Landsat surface temperature per district, Beijing 2022. Right: Heat index categories based on percentile rank of mean temperature</figcaption>
+<p><img src="figures/Percentile.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Right: Heat index categories based on percentile rank of mean temperature.</figcaption>
 </figure>
+</div>
 </div>
 </div>
 </div>
