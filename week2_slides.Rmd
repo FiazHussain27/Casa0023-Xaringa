@@ -75,14 +75,19 @@ Landsat's **thermal infrared band** enables land surface temperature retrieval, 
 ---
 # Application 2 — Land Cover Change
 
+.pull-left[
 Wulder et al. (2022) highlight that Landsat's 50-year archive enables detection of land change across the full Anthropocene — urban expansion, deforestation, agricultural intensification — at 30m. Sentinel-2 only provides data from 2015, making it insufficient for long-term baselines.
 
 Hansen et al. used annual Landsat composites to produce the first globally consistent map of forest loss at 30m, detecting **2.3 million km²** of forest loss between 2000 and 2012.
 
 Schneider et al. quantified global urban expansion between 1990–2000, finding urban land increased by **58,000 km²** in a single decade — only possible with Landsat's temporal depth.
+]
 
-.footnote[Wulder et al. (2022) DOI: 10.1016/j.rse.2022.113195]
-
+.pull-right[
+```{r, echo=FALSE, out.width="85%", out.height="280px", fig.cap="Forest loss, Amazon Basin. Source: NASA Earth Observatory (public domain)."}
+knitr::include_graphics("figures/deforestation_amazon.jpg")
+```
+]
 ---
 # Application 3 — Surface Water Monitoring
 
