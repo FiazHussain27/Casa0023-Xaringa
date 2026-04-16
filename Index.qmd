@@ -4,7 +4,7 @@ Hi, I'm Fiaz Hussain, a student on the MSc Urban Spatial Science programme at UC
 
 Outside of academia I practise Qi Gong, Tai Chi and meditation — disciplines that have taught me the value of patience, attention to detail, and seeing patterns in complexity. I find these qualities translate surprisingly well to spatial analysis and remote sensing.
 
-![Tai Chi practice, Hong Kong](https://upload.wikimedia.org/wikipedia/commons/c/ce/20091004_tai_chi_Hong_Kong_Kowloon_6895.jpg)
+![Tai Chi practice, Hong Kong. Source: Wikimedia Commons (public domain)](https://upload.wikimedia.org/wikipedia/commons/c/ce/20091004_tai_chi_Hong_Kong_Kowloon_6895.jpg)
 
 {{< video https://www.youtube.com/watch?v=83RmLAnpqE8 >}}
 
