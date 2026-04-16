@@ -33,7 +33,8 @@ The most direct application of EO data to the London Plan's heat-related policie
 
 A practical workflow would be:
 
-1. **Map LST** across London using Landsat 8/9 thermal band (Band 10), filtering for summer months with low cloud cover, applying scale factors and converting to Celsius. Reduce to a mean summer LST per output area using `reduceRegions` in GEE
+1. **Map LST** across London using Landsat 8/9 thermal band (Band 10), filtering for summer months with low cloud cover, applying scale factors and converting to Celsius. Reduce to a mean summer LST per output area using `reduceRegions` in GEE . Landsat LST represents Land Surface Temperature (the temperature of the skin of the earth), which can be significantly higher than the Air Temperature reported in weather forecasts.
+
 2. **Percentile rank output areas** and assign a heat risk score of 1 to 5 — making the results directly interpretable for planners and policymakers [@wilsonUrbanHeatManagement2020]
 3. **Map NDVI** from Sentinel-2 at 10m to assess green cover at ward and output area level
 4. **Overlay with deprivation data** to identify where heat exposure and social vulnerability coincide — @liModelingRelationshipsHistorical2022 showed that historically disadvantaged areas consistently experience higher heat exposure, and a similar pattern is likely in London where deprived inner-city areas tend to have less green space
